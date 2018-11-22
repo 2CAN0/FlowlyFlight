@@ -1,0 +1,8 @@
+UPLOAD ALLEEN BESTANDEN DIE JE ZELF HEBT GE-EDIT, EN CHECK OF DEZE WERKEN MET DE HUIDIGE CODE
+
+*	CHANGELOG	*
+- Menu_Button aangepast
+- Menu_Title toegevoegd
+- setupMenu() , setupTitle() , drawMenu() en drawTitle() toegevoegd aan de Main
+- Het gedeelte in Main die het spel zelf cast, zijn in een if statement gezet en wordt pas uitgevoerd
+  als er op de startknop wordt gedrukt in het menu (die via een boolean werkt)
