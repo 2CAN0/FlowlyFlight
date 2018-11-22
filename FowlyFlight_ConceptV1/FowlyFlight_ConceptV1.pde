@@ -28,7 +28,7 @@ void draw() {
       collectableUpdate();
       score.update();      
       score.draw();
-      //stamina.update(); //Uitgezet omdat het voor frameDrop zorgde
+      stamina.update();
       stamina.draw();
     } else {
       dead.update();
