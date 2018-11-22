@@ -1,41 +1,38 @@
 // Alex
 
 class Stamina {
-  float staminaBarX, staminaBarY, staminaLevel, staminaMax, staminaDrain, staminaRegen, staminaHeight, staminaBarClr, staminaWidth;
-  float w;
+  float staminaBarX, staminaBarY, staminaLevel, staminaMax, staminaHeight, staminaBarClr, staminaWidth;
+  int staminaDrain, staminaRegen;
 
   Stamina() {
     staminaBarX = 180;
     staminaBarY = 0;
     staminaLevel = 1420.0;
-    w = staminaLevel;
     staminaMax = 1420.0;
     staminaWidth = staminaLevel;
-    staminaDrain = 6;
-    staminaRegen = 2;
     staminaHeight = 30;
     staminaBarClr = color(0, 255, 0);
+    staminaDrain = 6;
+    staminaRegen = 2;
   }
 
   void update() {
-    staminaLevel = ( staminaMax * (player.vx/totalPlayerVx));
-    println((int)staminaLevel);
-    staminaWidth = staminaLevel;
-
-    //else {
-    //  while (staminaLevel <= staminaMax) {                // TODO regen functie laten werken
-    //    staminaLevel += staminaRegen;
-    //  }
-    //}
+    if (keysPressed[32] && player.launched == true && staminaLevel > 0) {
+      staminaLevel -= staminaDrain;
+    } else {
+      if (staminaLevel < staminaMax) {
+        staminaLevel += staminaRegen;
+      }
+    }
   }
 
   void draw() {
     stroke(255);
     fill(0, 0);
-    rect(staminaBarX, staminaBarY, w, staminaHeight);
+    rect(staminaBarX, staminaBarY, staminaMax, staminaHeight);
     noStroke();
-    fill(0,255,0);
-    rect(staminaBarX, staminaBarY, staminaWidth, staminaHeight);
+    fill(0, 255, 0);
+    rect(staminaBarX, staminaBarY, staminaLevel, staminaHeight);
   }
 }
 
