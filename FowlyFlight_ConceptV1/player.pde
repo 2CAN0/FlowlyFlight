@@ -21,7 +21,7 @@ class Player {
     airFriction = 0.01;
     flappingPower = 2.5;
     bounceFrictionModifier = 2;
-    airFrictionModifier = 0.1;
+    airFrictionModifier = 0.05;
     hitGround = false;
     launched = false;
     x -= w;
@@ -85,7 +85,10 @@ class Player {
     
     //vx == 0 functie [DEATHSCREEN]
     if (vx == 0 && launched == true){
-        dead.status = true;
+        stamina.staminaLevel = 0;
+        if (y == height - h){
+           dead.status = true;
+        }
     }
   }
 

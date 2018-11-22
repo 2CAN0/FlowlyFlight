@@ -9,7 +9,7 @@ class Score {
       scoreUpdated = true;
     }
 
-    if (!dead.status) {
+    if (!dead.status && player.vy != 0) {
       score ++;
     }
   }
