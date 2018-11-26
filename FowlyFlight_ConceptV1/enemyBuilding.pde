@@ -4,13 +4,15 @@ class EnemyBuilding {
     h, 
     w, 
     vx;
+    PImage img;
 
-  EnemyBuilding() {
+  EnemyBuilding(PImage[] imgList) {
     h = random(50, height/3);
     w = random(200, 300);
     x = random(width, width + 300);
     y = height - h;
     vx = random(-15, -5);
+    img = imgList[(int)Math.floor(random(0, imgList.length))];
   }
 
   void Move() {
@@ -55,7 +57,7 @@ class EnemyBuilding {
 
   void draw() {
     fill(255, 200);
-    rect(x, y, w, h);
+    image(img,x, y, w, h);
     if (devMode) {
       fill(0, 0);
       stroke(255, 0, 0);
@@ -79,7 +81,7 @@ void drawBuilding() {
 
 void setupBuilding() {
   for (int iBuilding = 0; iBuilding < MAX_BUILDINGS; iBuilding++) {
-    EnemyBuilding building = new EnemyBuilding();
+    EnemyBuilding building = new EnemyBuilding(buildingImages);
     building.draw();
     Buildings.add(building);
   }
