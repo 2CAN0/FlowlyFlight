@@ -39,6 +39,8 @@ StopWatchTimer timer2;
 //Enemies
 ///Enemy Buildings
 final int MAX_BUILDINGS = 2;
+String[] buildingNames = {"Gebouw.png"};
+PImage[] buildingImages = new PImage[buildingNames.length];
 
 ///Enemy Airplane
 StopWatchTimer timer;
@@ -56,16 +58,21 @@ float ttlW = 340;
 
 void mainSetup() {
   //Wallpaper
-   wall.add(loadImage("Sprites/backGround.png"));
+  wall.add(loadImage("Sprites/backGround.png"));
   wall.add(loadImage("Sprites/backGround2.png"));
-  
+
   //Collectables
   timer2 = new StopWatchTimer();
-  
+
   //Enemies
   timer = new StopWatchTimer();
+
   wallpaper = loadImage("Sprites/backgroundGrey.png");
-  
+
+  for (int iBuilding = 0; iBuilding < buildingNames.length; iBuilding++) {
+    buildingImages[iBuilding] = loadImage("Sprites/"+buildingNames[iBuilding]);
+  }
+
   //General
   player = new Player();
   hs = new HighScore(loadTable(hsLocation, "header"), hsLocation, MAX_SCORES, 350, 400);
@@ -78,11 +85,11 @@ void mainSetup() {
 
   //player
   blueBird = new Animation("Sprites/ducky_", 2);
-  
+
   //Tutorial
   spaceBar = loadImage("Sprites/spaceBar.png");
   tutText = loadFont("tutFont.vlw");
-  
+
   enemies.add(new Enemy(30, 30, 10));
   font = loadFont("data/8BIT.vlw");
   setupBuilding();
