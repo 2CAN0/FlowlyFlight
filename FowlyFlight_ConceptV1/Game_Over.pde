@@ -41,7 +41,7 @@ void drawGameOver() {
 void restart() {
   enemyReset();
   hsUpdated = false;
-  enemies.add(new Enemy(30, 30, player.vx));
+  enemies.add(new Enemy(30, 30, player.vx, plane));
   Buildings.clear();
   setupBuilding();
   player = new Player();
