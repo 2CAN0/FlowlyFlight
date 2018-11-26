@@ -58,7 +58,7 @@ class Menu {
       btn2.selected = false;
       changedSelected = true;
     }
-
+    
     if (keysPressed[ENTER] && !enterPressed) {
       enterPressed = true;
       Button btn = buttons.get(selectedIndex);
@@ -66,6 +66,9 @@ class Menu {
          inMenu = false;
          playGame = true;
       } else if (btn.text == options[1]){
+         inMenu = false;
+         inShop = true;                                          
+      } else if (btn.text == options[2]){
          exit(); 
       }
     }

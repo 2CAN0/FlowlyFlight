@@ -15,6 +15,7 @@ Stamina stamina;
 HighScore hs;
 Animation blueBird;
 
+
 /////DEV-MODE BEVAT coole en rare mechanics xD//////
 boolean devMode = false;
 ////////////////////////////////////////////////////
@@ -28,9 +29,13 @@ PImage wallpaper;
 //Menu
 Menu menu;
 String gameName = "Fowly Flight";
-String[] options = {"Play", "Exit"};
+String[] options = {"Play", "Shop", "Exit"};
 boolean inMenu = true;
 boolean playGame = false;
+boolean inShop = false;
+
+//Shop menu
+ShopMenu menuShop;
 
 //Collectables
 float collectedCoins = 0;

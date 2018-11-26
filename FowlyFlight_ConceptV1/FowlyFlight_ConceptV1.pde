@@ -12,10 +12,10 @@ void setup() {
 }
 
 void draw() {
-  if (inMenu || !playGame) {
+  if (inMenu && !playGame & !inShop) {
     menu.update();
     menu.draw();
-  } else if (playGame) {
+  } else if (playGame && !inShop) {
     if (!dead.status) {
       background(30);
       drawWall();
@@ -35,6 +35,9 @@ void draw() {
       dead.draw(); 
       hs.draw();
     }
+  } else if (inShop) {
+    menuShop.update();          //TODO NullPointerException!
+    menuShop.draw();
   }
 
   if (devMode) {
