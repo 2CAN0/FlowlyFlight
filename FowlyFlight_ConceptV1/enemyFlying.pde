@@ -16,8 +16,9 @@ class Enemy {
 
   boolean timerRunning = false;
   boolean hitDetected;
+  PImage plane;
 
-  Enemy(float enemyHeight, float enemyWidth, float xVelocity) {
+  Enemy(float enemyHeight, float enemyWidth, float xVelocity, PImage pImg) {
     h = enemyHeight;
     w = enemyWidth;
     x = random(width, width + 100); 
@@ -31,6 +32,7 @@ class Enemy {
     b = (int)random(0, 256);
 
     startTimer();
+    plane = pImg;
   }
 
   void startTimer() {
@@ -95,7 +97,7 @@ class Enemy {
     else
       fill(255);
 
-    rect(x, y, w, h);
+    image(plane, x, y, w, h);
   }
 }
 
@@ -109,7 +111,7 @@ void enemyUpdate() {
     if (timer.second() >= spawn) {
       timer.stop();
       enemiesCount++;
-      enemies.add(new Enemy(30, 30, random(5, 15)));
+      enemies.add(new Enemy(planeHeight, planeWidth, random(5, 15), plane));
       spawn = random(5, 8);
       timer = new StopWatchTimer();
       timer.start();
