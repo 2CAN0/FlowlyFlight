@@ -26,7 +26,7 @@ void setup() {
   coin_pickup = Sound.loadFile("Pickup_Coin.wav");
   gameOver = Sound.loadFile("gameOver.mp3");
   explosion = Sound.loadFile("Explosion.wav");
-  //menutheme.play();
+  menutheme.play();
   size(1600, 900, P3D);
   noStroke();
   noCursor();
