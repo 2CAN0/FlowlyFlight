@@ -12,8 +12,8 @@ class Stamina {
     staminaWidth = staminaLevel;
     staminaHeight = 30;
     staminaBarClr = color(0, 255, 0);
-    staminaDrain = 6;
-    staminaRegen = 2;
+    staminaDrain = 8;
+    staminaRegen = 1;
   }
 
   void update() {
