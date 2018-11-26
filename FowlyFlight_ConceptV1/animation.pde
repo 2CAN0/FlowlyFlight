@@ -2,6 +2,7 @@ class Animation {
   PImage[] images;
   int imageCount;
   int frame;
+  int fps = 12;
   
   Animation(String imagePrefix, int count) {
     imageCount = count;
@@ -15,7 +16,8 @@ class Animation {
   }
 
   void display(float xpos, float ypos, float w, float h) {
-    frame = (frame+1) % imageCount;
+    if(frameCount % fps == 0)
+      frame = (frame+1) % imageCount;
     image(images[frame], xpos, ypos, w, h);
   }
   

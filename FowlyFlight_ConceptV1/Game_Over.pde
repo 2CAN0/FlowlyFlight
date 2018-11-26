@@ -28,6 +28,8 @@ class GameOver {
   void update() {
     if (status) 
       if (!hsUpdated) {
+        gameOver.rewind();
+        gameOver.play();
         hs.update(score.score, playerName);
         hsUpdated = true;
       }
