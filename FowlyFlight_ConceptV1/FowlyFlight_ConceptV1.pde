@@ -80,13 +80,13 @@ void draw() {
 }
 
 void keyPressed() {  
-  if (keyCode >= KEY_LIMIT) return; 
-  keysPressed[keyCode] = true;
+  if (keyCode < KEY_LIMIT) 
+    keysPressed[keyCode] = true;
 }
 
 void keyReleased() {
-  if (keyCode >= KEY_LIMIT) return;
-  keysPressed[keyCode] = false;
+  if (keyCode < KEY_LIMIT)
+    keysPressed[keyCode] = false;
 
   enterPressed = false;
   hs.changedSelected = false;
