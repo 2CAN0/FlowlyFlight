@@ -87,6 +87,7 @@ void mainSetup() {
   totalPlayerVx = player.vx;
   dead = new GameOver(width/2, height/2 - 40, 225, 100, "OMG You dieded!\n\n Press A to restart", 30);
   menu = new Menu(options, gameName, wall);
+  //menuShop = new ShopMenu(wall, characters, selectedCharacter);
 
   //player
   blueBird = new Animation("Sprites/ducky_", 2);
