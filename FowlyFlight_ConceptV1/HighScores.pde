@@ -168,10 +168,14 @@ class HighScore {
         Button btn = buttons.get(selectedIndex);
         if (btn.text == options[0]) {
           restart();
+          test.starts += 1;
         } else if (btn.text == options[1]) {
           restart();
           inMenu = true;
           playGame = false;
+          if(testing){
+             test.stopTesting();
+          }
         }
         dead.status = false;
       }

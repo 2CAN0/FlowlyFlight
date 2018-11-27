@@ -20,6 +20,12 @@ Animation blueBird;
 boolean devMode = false;
 ////////////////////////////////////////////////////
 
+///////Testing/////////
+String testFileLocation = "data/testData.csv";
+boolean testing = true;
+Testing test;
+///////////////////////
+
 PFont font;
 float defaultOverallVX;
 float playerTotalStam;
@@ -51,6 +57,9 @@ PImage[] buildingImages = new PImage[buildingNames.length];
 StopWatchTimer timer;
 float enemiesCount = 1, 
   spawn = (random(5, 8));
+PImage plane;
+float planeWidth = 100;
+float planeHeight = 50;
 
 //Score
 Score score;
@@ -62,6 +71,9 @@ float ttlH = 160;
 float ttlW = 340;
 
 void mainSetup() {
+  //Test
+  test = new Testing(testFileLocation);
+  
   //Wallpaper
   wall.add(loadImage("Sprites/backGround.png"));
   wall.add(loadImage("Sprites/backGround2.png"));
@@ -71,6 +83,7 @@ void mainSetup() {
 
   //Enemies
   timer = new StopWatchTimer();
+  plane = loadImage("Sprites/plane.png");
 
   wallpaper = loadImage("Sprites/backgroundGrey.png");
 
@@ -96,7 +109,7 @@ void mainSetup() {
   spaceBar = loadImage("Sprites/spaceBar.png");
   tutText = loadFont("tutFont.vlw");
 
-  enemies.add(new Enemy(30, 30, 10));
+  enemies.add(new Enemy(planeHeight, planeWidth, 10, plane));
   font = loadFont("data/8BIT.vlw");
   setupBuilding();
   setupWall(); 

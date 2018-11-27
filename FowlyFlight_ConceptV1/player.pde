@@ -42,6 +42,8 @@ class Player {
 
     // "Stop sinking please" function
     if (y + h > height) {
+      jump.rewind();
+      jump.play();
       y = height - h;
     }
 
@@ -50,12 +52,12 @@ class Player {
       vy += 0.5 * gravity;
       vx += airFriction * airFrictionModifier;
     }
-    
-    if (vy > 0 && vx < 0){ // When losing altitude
+
+    if (vy > 0 && vx < 0) { // When losing altitude
       vx -= (0.6 * airFrictionModifier);
     }
-    
-    if (vy < 0 && vx < 0){ // When gaining altitude
+
+    if (vy < 0 && vx < 0) { // When gaining altitude
       vx += airFrictionModifier;
     }
 
@@ -68,8 +70,8 @@ class Player {
         vx += (bounceFriction * bounceFrictionModifier);
       }
     } else {
-     vx = 0; 
-     coin.vx = 0;
+      vx = 0; 
+      coin.vx = 0;
     }
 
     // Ceiling
@@ -82,23 +84,23 @@ class Player {
     if (keysPressed[32] && stamina.staminaLevel > 0 && !hitGround && vx < 0) {
       vy -= flappingPower;
     }
-    
+
     //vx == 0 functie [DEATHSCREEN]
-    if (vx == 0 && launched == true){
-        stamina.staminaLevel = 0;
-        if (y == height - h){
-           dead.status = true;
-        }
+    if (vx == 0 && launched == true) {
+      stamina.staminaLevel = 0;
+      if (y == height - h) {
+        dead.status = true;
+      }
     }
   }
 
   void draw() {
     fill(clr);
     blueBird.display(x, y, w, h);
-    if (devMode){
-     fill(0,0);
-     stroke(255,0,0);
-     rect(x,y,w, h);
+    if (devMode) {
+      fill(0, 0);
+      stroke(255, 0, 0);
+      rect(x, y, w, h);
     }
   }
 }

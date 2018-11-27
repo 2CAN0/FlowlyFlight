@@ -65,6 +65,10 @@ class Menu {
       if (btn.text == options[0]){
          inMenu = false;
          playGame = true;
+         if(testing){
+            test.startTesting(); 
+            test.starts += 1;
+         }
       } else if (btn.text == options[1]){
          inMenu = false;
          inShop = true;                                          

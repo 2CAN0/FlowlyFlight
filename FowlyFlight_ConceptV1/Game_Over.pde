@@ -28,6 +28,8 @@ class GameOver {
   void update() {
     if (status) 
       if (!hsUpdated) {
+        gameOver.rewind();
+        gameOver.play();
         hs.update(score.score, playerName);
         hsUpdated = true;
       }
@@ -41,7 +43,7 @@ void drawGameOver() {
 void restart() {
   enemyReset();
   hsUpdated = false;
-  enemies.add(new Enemy(30, 30, player.vx));
+  enemies.add(new Enemy(30, 30, player.vx, plane));
   Buildings.clear();
   setupBuilding();
   player = new Player();

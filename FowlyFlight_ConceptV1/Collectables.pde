@@ -28,7 +28,9 @@ class Collectables {
   void draw() {
     if (hitDetected(x, y, player.x+ player.w, player.y + player.h/2)) {
       collectedCoins += 1;
-      vx = -10;
+      coin_pickup.rewind();
+      coin_pickup.play();
+      vx   = -10;
       x = 0 - radius;
       println("Coins: "+(int)collectedCoins);
     } else {
@@ -52,7 +54,7 @@ void collectableUpdate() {
   if (timer2.second() >= 10) {
     timer2.stop();
     coin.x = width + 100;
-    coin.y = random(0,height);
+    coin.y = random(0, height);
     timer2 = new StopWatchTimer();
     timer2.start();
   }

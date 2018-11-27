@@ -1,7 +1,32 @@
 // The Fowly Flight
 // IG102-2
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim Sound;
+AudioPlayer menutheme;
+AudioPlayer jump;
+AudioPlayer bounce;
+AudioPlayer hit;
+AudioPlayer coin_pickup;
+AudioPlayer gameOver;
+AudioPlayer explosion;
+
 
 void setup() {
+  Sound = new Minim(this);
+  menutheme = Sound.loadFile("ShootingStars.mp3");
+  jump = Sound.loadFile("jump.wav");
+  bounce = Sound.loadFile("mJump.wav");
+  hit = Sound.loadFile("Hit_Hurt.wav");
+  coin_pickup = Sound.loadFile("Pickup_Coin.wav");
+  gameOver = Sound.loadFile("gameOver.mp3");
+  explosion = Sound.loadFile("Explosion.wav");
+  menutheme.play();
   size(1600, 900, P3D);
   noStroke();
   noCursor();
@@ -12,7 +37,7 @@ void setup() {
 }
 
 void draw() {
-  if (inMenu && !playGame & !inShop) {
+  if (inMenu && !playGame & !inShop) {  
     menu.update();
     menu.draw();
   } else if (playGame && !inShop) {
