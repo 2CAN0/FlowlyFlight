@@ -96,7 +96,7 @@ class Player {
 
   void draw() {
     fill(clr);
-    blueBird.display(x, y, w, h);
+    characters[selectedCharacter].display(x, y, w, h);
     if (devMode) {
       fill(0, 0);
       stroke(255, 0, 0);

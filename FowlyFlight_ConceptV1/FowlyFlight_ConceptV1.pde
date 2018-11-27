@@ -93,5 +93,7 @@ void keyReleased() {
 
   if (inMenu) {
     menu.changedSelected = false;
+  } else if (inShop){
+     menuShop.changedSelected = false; 
   }
 }

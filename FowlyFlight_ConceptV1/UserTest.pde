@@ -36,9 +36,9 @@ class Testing {
       playTime.stop();
       TableRow newResults = time.addRow();
       newResults.setInt(0, time.getRowCount());
-      newResults.setInt(1, playTime.getElapsedTime()); //PlayTime in miliseconds
+      newResults.setString(1, playTime.minute() + ":"+(playTime.second() - (60*playTime.minute()))); //PlayTime in miliseconds
       newResults.setInt(2, starts);
-      newResults.setInt(3, playTime.getElapsedTime()/starts);
+      newResults.setString(3, playTime.minute() + ":" + (playTime.getElapsedTime()/starts)/1000);
       try{
         saveTable(time, fileLocation);
         println("Table Saved");

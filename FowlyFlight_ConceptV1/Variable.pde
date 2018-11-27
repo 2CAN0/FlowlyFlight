@@ -61,6 +61,12 @@ PImage plane;
 float planeWidth = 100;
 float planeHeight = 50;
 
+//Character Shop
+String[] characterNames = {"Sprites/ducky_", "Sprites/gunther_"};
+int[] characterFrames = {2, 4};
+Animation[] characters = new Animation[characterNames.length];
+int selectedCharacter = 0;
+
 //Score
 Score score;
 
@@ -90,7 +96,7 @@ void mainSetup() {
   for (int iBuilding = 0; iBuilding < buildingNames.length; iBuilding++) {
     buildingImages[iBuilding] = loadImage("Sprites/"+buildingNames[iBuilding]);
   }
-
+  
   //General
   player = new Player();
   hs = new HighScore(loadTable(hsLocation, "header"), hsLocation, MAX_SCORES, 350, 400);
@@ -100,10 +106,15 @@ void mainSetup() {
   totalPlayerVx = player.vx;
   dead = new GameOver(width/2, height/2 - 40, 225, 100, "OMG You dieded!\n\n Press A to restart", 30);
   menu = new Menu(options, gameName, wall);
-  //menuShop = new ShopMenu(wall, characters, selectedCharacter);
+  
+  for(int iChar = 0; iChar < characterNames.length; iChar++){
+     characters[iChar] = new Animation(characterNames[iChar], characterFrames[iChar]); 
+  }
+  
+  menuShop = new ShopMenu(wall, characters);
 
   //player
-  blueBird = new Animation("Sprites/ducky_", 2);
+  blueBird = new Animation(characterNames[selectedCharacter], 2);
 
   //Tutorial
   spaceBar = loadImage("Sprites/spaceBar.png");
