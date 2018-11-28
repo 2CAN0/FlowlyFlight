@@ -62,8 +62,8 @@ float planeWidth = 100;
 float planeHeight = 50;
 
 //Character Shop
-String[] characterNames = {"Sprites/ducky_", "Sprites/gunther_"};
-int[] characterFrames = {2, 4};
+String[] characterNames = {"ducky_", "gunther_","owliver_","wally_"};
+int[] characterFrames = {2, 4, 7, 3};
 Animation[] characters = new Animation[characterNames.length];
 int selectedCharacter = 0;
 
