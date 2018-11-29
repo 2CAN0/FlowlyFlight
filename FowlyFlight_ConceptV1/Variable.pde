@@ -99,7 +99,7 @@ void mainSetup() {
   
   //General
   player = new Player();
-  hs = new HighScore(loadTable(hsLocation, "header"), hsLocation, MAX_SCORES, 350, 400);
+  hs = new HighScore(hsLocation, MAX_SCORES, 350, 400);
   playerLauncher = new PlayerLauncher();
   coin = new Collectables(player.vx);
   playerTotalStam = player.vx;

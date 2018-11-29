@@ -7,12 +7,39 @@ class HighScore {
   boolean changedSelected = false;
   MiniMenu mm;
 
-  HighScore(Table s, String fL, int mS, float w, float h) {
-    scores = s;
+  HighScore(String fL, int mS, float w, float h) {
     fileLocation = fL;
     maxScores = mS;
+    try {
+      scores = loadTable(fileLocation, "header"); 
+      scores.getInt(0, 0);
+      println("Table Loaded (HighScores)");
+    } 
+    catch (Exception ex) {
+      println("!!!!!!Failed to load table we will create a new one!!!!!!!"); 
+      println("Error: "+ex.getMessage());
+
+      createTable();
+    }
     size = new PVector(w, h);
     mm = new MiniMenu(opt);
+  }
+
+  void createTable() {
+    scores = new Table();
+    String[] devNames = {"2CAN0", "FSaurus", "Nino", "Mitchell", "Jay", "Luca", "Alex", "John", "AAA", "AAA"};
+    int[] plScores = {7000, 6000, 5000, 4000, 3000, 2000, 1000, 500, 250, 0};
+    scores.addColumn("id");
+    scores.addColumn("name");
+    scores.addColumn("score");
+    for (int iData = 0; iData < maxScores; iData++) {
+      TableRow newRow = scores.addRow();
+      newRow.setInt(0, iData);
+      newRow.setString(1, devNames[iData]);
+      newRow.setInt(2, plScores[iData]);
+    }
+
+    println("Table Created");
   }
 
   void update(double s, String n) {
@@ -173,8 +200,8 @@ class HighScore {
           restart();
           inMenu = true;
           playGame = false;
-          if(testing){
-             test.stopTesting();
+          if (testing) {
+            test.stopTesting();
           }
         }
         dead.status = false;

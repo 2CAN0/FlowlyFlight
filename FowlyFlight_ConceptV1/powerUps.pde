@@ -1,5 +1,7 @@
 //Alexander (eigenlijk alleen maar Luca)
 
+ArrayList<PowerUps> savedPowerUps = new ArrayList<PowerUps>();
+
 class PowerUps {
   PVector location, velocity, size;
   PImage powerSprite;
