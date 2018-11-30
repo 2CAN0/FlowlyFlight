@@ -26,7 +26,7 @@ class Collectables {
   }
 
   void draw() {
-    if (hitDetected(x, y, player.x+ player.w, player.y + player.h/2)) {
+    if (hitDetected(player, coin)) {
       collectedCoins += 1;
       coin_pickup.rewind();
       coin_pickup.play();
@@ -40,13 +40,11 @@ class Collectables {
     }
   }
 
-  boolean hitDetected(float x1, float y1, float x2, float y2) {
-    float a = x1  - x2;
-    float b = y1- y2;
-    float c = sqrt(a*a +b*b);
-    float distance = c - radius *2;
+  boolean hitDetected(Player pl, Collectables coin) {
+    boolean x = (pl.x > coin.x - coin.radius && pl.x < coin.x + coin.radius) || (pl.x + pl.w > coin.x - coin.radius && pl.x + pl.w < coin.x + coin.radius);
+    boolean y = (pl.y > coin.y - coin.radius && pl.y < coin.y + coin.radius) || (pl.y + pl.h > coin.y - coin.radius && pl.y + pl.h < coin.y + coin.radius);
 
-    return (distance <= 0);
+    return (x && y);
   }
 }
 
