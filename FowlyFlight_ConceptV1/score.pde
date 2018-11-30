@@ -1,6 +1,11 @@
 class Score {
   float score;
+  float w;
   boolean scoreUpdated = false;
+
+  Score(float scoreW){
+     w = scoreW; 
+  }
 
   void update() {
 
@@ -17,7 +22,7 @@ class Score {
   void draw () {
     update();
     fill(0, 0, 0, 120);
-    rect(0, 0, 180, 70);
+    rect(0, 0, w, 70);
     fill(255);
     textAlign(LEFT, TOP);
     textSize(20);
@@ -27,5 +32,5 @@ class Score {
 }
 
 void setupScore() {
-  score = new Score();
+  score = new Score(scoreWidth);
 }

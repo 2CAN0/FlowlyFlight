@@ -27,7 +27,7 @@ void setup() {
   gameOver = Sound.loadFile("gameOver.mp3");
   explosion = Sound.loadFile("Explosion.wav");
   menutheme.play();
-  size(1600, 900, P3D);
+  size(1920, 1080, P3D);
   noStroke();
   noCursor();
   smooth();

@@ -36,9 +36,9 @@ class Testing {
       playTime.stop();
       TableRow newResults = time.addRow();
       newResults.setInt(0, time.getRowCount());
-      newResults.setString(1, playTime.minute() + ":"+(playTime.second() - (60*playTime.minute()))); //PlayTime in miliseconds
+      newResults.setString(1, playTime.minute() + ":"+((float)playTime.getElapsedTime() / 1000 - (60 * (playTime.getElapsedTime() / (1000*60)) % 60))); //PlayTime in miliseconds
       newResults.setInt(2, starts);
-      newResults.setString(3, ((playTime.getElapsedTime()/starts)/1000)%60 + ":" + ((playTime.getElapsedTime()/starts)/1000 - (60*(playTime.getElapsedTime()/starts)/1000%60)));
+      newResults.setString(3, ((playTime.getElapsedTime()/starts / (1000*60)) % 60) + ":" + ((float)playTime.getElapsedTime()/starts / 1000 - (60 * (playTime.getElapsedTime()/starts / (1000*60)) % 60)));
       try{
         saveTable(time, fileLocation);
         println("Table Saved");

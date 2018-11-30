@@ -4,11 +4,11 @@ class Stamina {
   float staminaBarX, staminaBarY, staminaLevel, staminaMax, staminaHeight, staminaBarClr, staminaWidth;
   int staminaDrain, staminaRegen;
 
-  Stamina() {
-    staminaBarX = 180;
+  Stamina(Score sc) {
+    staminaBarX = sc.w;
     staminaBarY = 0;
     staminaLevel = 1420.0;
-    staminaMax = 1420.0;
+    staminaMax = width - sc.w;
     staminaWidth = staminaLevel;
     staminaHeight = 30;
     staminaBarClr = color(0, 255, 0);
@@ -37,5 +37,5 @@ class Stamina {
 }
 
 void setupStamina() {
-  stamina = new Stamina();
+  stamina = new Stamina(score);
 }

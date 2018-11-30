@@ -69,6 +69,7 @@ int selectedCharacter = 0;
 
 //Score
 Score score;
+float scoreWidth = 200;
 
 //Tutorial
 PImage spaceBar;

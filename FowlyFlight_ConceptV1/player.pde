@@ -17,7 +17,7 @@ class Player {
     w = 140;
     h = 80;
     clr = color(255, 0, 0);
-    bounceFriction = 1.5;
+    bounceFriction = 1.2;
     airFriction = 0.01;
     flappingPower = 2.5;
     bounceFrictionModifier = 2;
