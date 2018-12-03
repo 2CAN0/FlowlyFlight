@@ -202,7 +202,7 @@ class HighScore {
         changedSelected = true;
       }
 
-      if (keysPressed[ENTER] && !enterPressed) {
+      if (keysPressed[ENTER] || keysPressed[32] && !enterPressed) {
         enterPressed = true;
         Button btn = buttons.get(selectedIndex);
         if (btn.text == options[0]) {

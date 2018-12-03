@@ -46,7 +46,7 @@ class NameCreater {
       prevC.selected = false;
     }
 
-    if (keysPressed[ENTER] && !enterPressed) {
+    if (keysPressed[ENTER] || keysPressed[32] && !enterPressed) {
       enterPressed = true;
       nameSet = true;
       name = "";
@@ -71,7 +71,7 @@ class NameCreater {
     stroke(255);
     textAlign(CENTER,CENTER);
     text("You got into the top 10", width/2, height/5);
-    text("Press Enter to continue", width/2, height/5*4);
+    text("Press EnterENTER to continue", width/2, height/5*4);
     textAlign(TOP, LEFT);
   }
 

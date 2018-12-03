@@ -34,7 +34,7 @@ class ShopMenu {
   }
 
   void update() {
-    if (keysPressed[ENTER] && !enterPressed) {
+    if (keysPressed[ENTER] || keysPressed[32] && !enterPressed) {
       inShop = false;
       inMenu = true;
       enterPressed = true;
