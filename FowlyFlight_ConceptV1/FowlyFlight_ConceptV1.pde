@@ -7,15 +7,30 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
+<<<<<<< HEAD
+=======
+Minim Sound;
+AudioPlayer menutheme;
+AudioPlayer jump;
+AudioPlayer bounce;
+AudioPlayer hit;
+AudioPlayer coin_pickup;
+AudioPlayer gameOver;
+AudioPlayer explosion;
+AudioPlayer theme;
+
+
+>>>>>>> 289441648fc838bbd7e7054ea6de0452798a1c5d
 void setup() {
   Sound = new Minim(this);
-  menutheme = Sound.loadFile("ShootingStars.mp3");
+  menutheme = Sound.loadFile("menu1.mp3");
   jump = Sound.loadFile("jump.wav");
   bounce = Sound.loadFile("mJump.wav");
   hit = Sound.loadFile("Hit_Hurt.wav");
   coin_pickup = Sound.loadFile("Pickup_Coin.wav");
-  gameOver = Sound.loadFile("gameOver.mp3");
+  gameOver = Sound.loadFile("gameOver1.mp3");
   explosion = Sound.loadFile("Explosion.wav");
+  theme = Sound.loadFile("menu2.mp3");
   menutheme.play();
   size(1920, 1080, P3D);
   noStroke();

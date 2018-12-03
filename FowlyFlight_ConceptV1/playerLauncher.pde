@@ -29,19 +29,21 @@ class PlayerLauncher {
       player.vx = launchSpeed * speedVariable; // Player speed assign!
       coin.vx = player.vx;
       player.launched = true;
-      for(Enemy en : enemies)
+      explosion.rewind();
+      explosion.play();
+      for (Enemy en : enemies)
         en.vx = player.vx;
     }
   }
-  
+
   void draw() {
     update();
-      playerLauncher.launcherAparatus();
-      if (player.launched){
+    playerLauncher.launcherAparatus();
+    if (player.launched) {
       rotate(PI/-rotation);
-        x += player.vx * -1;
-        y += player.vx * -1;
-      }
+      x += player.vx * -1;
+      y += player.vx * -1;
+    }
   }
 }
 
