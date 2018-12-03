@@ -196,10 +196,16 @@ class HighScore {
         if (btn.text == options[0]) {
           restart();
           test.starts += 1;
+          gameOver.pause();
+          theme.rewind();
+          theme.play();
         } else if (btn.text == options[1]) {
           restart();
           inMenu = true;
           playGame = false;
+          gameOver.pause();
+          menutheme.rewind();
+          menutheme.play();
           if (testing) {
             test.stopTesting();
           }

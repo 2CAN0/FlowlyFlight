@@ -65,6 +65,10 @@ class Menu {
       if (btn.text == options[0]){
          inMenu = false;
          playGame = true;
+         menutheme.pause();
+         theme.rewind();
+         theme.play();
+         
          if(testing){
             test.startTesting(); 
             test.starts += 1;

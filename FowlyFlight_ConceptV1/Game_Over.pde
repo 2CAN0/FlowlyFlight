@@ -30,6 +30,7 @@ class GameOver {
       if (!hsUpdated) {
         gameOver.rewind();
         gameOver.play();
+        theme.pause();
         hs.update(score.score, playerName);
         hsUpdated = true;
       }
