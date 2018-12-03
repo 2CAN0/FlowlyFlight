@@ -61,7 +61,7 @@ void draw() {
       hs.draw();
     }
   } else if (inShop) {
-    menuShop.update();          //TODO NullPointerException!
+    menuShop.update();
     menuShop.draw();
   }
 
