@@ -29,6 +29,7 @@ class ShopMenu {
   void draw() {
     image(fWall, 0,0, width, height);
     float grow = 2;
-    characters[selectedCharacter].display(width/2 - player.w/2*grow, height/2 - player.h/2*grow, player.w*grow, player.h*grow);      
+    characters[selectedCharacter].display(width/2 - player.w/2*grow, height/2 - player.h/2*grow, player.w*grow, player.h*grow);
+    
   }
 }
