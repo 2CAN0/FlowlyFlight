@@ -7,16 +7,6 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-Minim Sound;
-AudioPlayer menutheme;
-AudioPlayer jump;
-AudioPlayer bounce;
-AudioPlayer hit;
-AudioPlayer coin_pickup;
-AudioPlayer gameOver;
-AudioPlayer explosion;
-
-
 void setup() {
   Sound = new Minim(this);
   menutheme = Sound.loadFile("ShootingStars.mp3");
@@ -48,7 +38,7 @@ void draw() {
       enemyUpdate();
       player.update();
       playerLauncherUpdate();
-      if(player.launched)
+      if (player.launched)
         player.draw();
       collectableUpdate();
       score.update();      
@@ -56,9 +46,8 @@ void draw() {
       stamina.update();
       stamina.draw();
     } else {
+      dead.draw();
       dead.update();
-      dead.draw(); 
-      hs.draw();
     }
   } else if (inShop) {
     menuShop.update();
@@ -68,10 +57,10 @@ void draw() {
   if (devMode) {
     textAlign(RIGHT, TOP);
     textSize(20);
-    if(frameRate < 55){
-    fill(255, 0, 0);
+    if (frameRate < 55) {
+      fill(255, 0, 0);
     } else {
-     fill(255); 
+      fill(255);
     }
     println("fps: "+ frameRate);
     text("fps: "+ frameRate, width, 0); 
@@ -93,7 +82,9 @@ void keyReleased() {
 
   if (inMenu) {
     menu.changedSelected = false;
-  } else if (inShop){
-     menuShop.changedSelected = false; 
+  } else if (inShop) {
+    menuShop.changedSelected = false;
   }
+  
+  hs.nameC.changed = false;
 }

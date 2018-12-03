@@ -22,11 +22,8 @@ class ShopMenu {
 
   void buttons() {
     fill(255);
-    stroke(0);
-    strokeWeight(1);
     triangle (arrowLeftPosX, arrowLeftPosY, arrowLeftPosX + arrowWidth, arrowLeftPosY - arrowHeight, arrowLeftPosX + arrowWidth, arrowLeftPosY + arrowHeight);                // TODO - geen magic numbers!
     triangle (arrowRightPosX, arrowRightPosY, arrowRightPosX - arrowWidth, arrowRightPosY - arrowHeight, arrowRightPosX - arrowWidth, arrowRightPosY + arrowHeight);             // TODO - geen magic numbers!
-    noStroke();
 
     fill(0, 120);
     rect(width / 4, height / 4 * 3, width / 2, 50);         // TODO - geen magic numbers!

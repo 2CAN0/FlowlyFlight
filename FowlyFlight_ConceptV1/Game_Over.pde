@@ -26,23 +26,22 @@ class GameOver {
   }
 
   void update() {
-    if (status) 
-      if (!hsUpdated) {
+    if (status) {
+      if (!gameOverPlayer) {
         gameOver.rewind();
         gameOver.play();
-        hs.update(score.score, playerName);
-        hsUpdated = true;
       }
+      hs.update(score.score);
+      hs.draw();
+    }
   }
-}   
-
-void drawGameOver() {
-  fill(255);
 }
 
 void restart() {
   enemyReset();
   hsUpdated = false;
+  hs.nameC.nameSet = false;
+  gameOverPlayer = false;
   enemies.add(new Enemy(30, 30, player.vx, plane));
   Buildings.clear();
   setupBuilding();

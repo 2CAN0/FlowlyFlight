@@ -4,7 +4,7 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 boolean hsUpdated = false;
 boolean enterPressed = false;
 String hsLocation = "data/highScore.csv";
-String playerName = "AAA";
+String name = "AAA";
 
 Player player;
 PlayerLauncher playerLauncher;
@@ -14,6 +14,7 @@ GameOver dead;
 Stamina stamina;
 HighScore hs;
 Animation blueBird;
+NameCreater nameCreater;
 
 
 /////DEV-MODE BEVAT coole en rare mechanics xD//////
@@ -22,7 +23,7 @@ boolean devMode = false;
 
 ///////Testing/////////
 String testFileLocation = "data/testData.csv";
-boolean testing = false;
+boolean testing = true;
 Testing test;
 ///////////////////////
 
@@ -31,6 +32,17 @@ float defaultOverallVX;
 float playerTotalStam;
 float totalPlayerVx;
 PImage wallpaper;
+
+//Audio
+Minim Sound;
+AudioPlayer menutheme;
+AudioPlayer jump;
+AudioPlayer bounce;
+AudioPlayer hit;
+AudioPlayer coin_pickup;
+AudioPlayer gameOver;
+AudioPlayer explosion;
+boolean gameOverPlayer = false;
 
 //Menu
 Menu menu;
@@ -81,6 +93,9 @@ void mainSetup() {
   //Test
   test = new Testing(testFileLocation);
   
+  //NameCreater
+  nameCreater = new NameCreater(6);
+  
   //Wallpaper
   wall.add(loadImage("Sprites/backGround.png"));
   wall.add(loadImage("Sprites/backGround2.png"));
@@ -100,7 +115,7 @@ void mainSetup() {
   
   //General
   player = new Player();
-  hs = new HighScore(hsLocation, MAX_SCORES, 350, 400);
+  hs = new HighScore(hsLocation, MAX_SCORES, 350, 400, nameCreater);
   playerLauncher = new PlayerLauncher();
   coin = new Collectables(player.vx);
   playerTotalStam = player.vx;

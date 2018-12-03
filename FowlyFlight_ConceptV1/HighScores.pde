@@ -6,8 +6,9 @@ class HighScore {
   boolean restart = false;
   boolean changedSelected = false;
   MiniMenu mm;
+  NameCreater nameC;
 
-  HighScore(String fL, int mS, float w, float h) {
+  HighScore(String fL, int mS, float w, float h, NameCreater NC) {
     fileLocation = fL;
     maxScores = mS;
     try {
@@ -23,6 +24,7 @@ class HighScore {
     }
     size = new PVector(w, h);
     mm = new MiniMenu(opt);
+    nameC = NC;
   }
 
   void createTable() {
@@ -42,9 +44,17 @@ class HighScore {
     println("Table Created");
   }
 
-  void update(double s, String n) {
-    if (!hsUpdated) {
-      sortTable(scores, s, n);
+  void update(double s) {
+    if (s >= scores.getInt(scores.getRowCount() - 1, "score") && !nameC.nameSet) {
+      nameC.update();
+      nameC.draw();
+    } else {
+      nameC.nameSet = true;
+    }
+
+    if (!hsUpdated && nameC.nameSet) {
+      sortTable(scores, s, name);
+      hsUpdated = true;
       while (scores.getRowCount() > maxScores) {
         scores.removeRow(scores.getRowCount() - 1);
       }
@@ -71,7 +81,7 @@ class HighScore {
     for (int iScore = 0; iScore < scores.getRowCount(); iScore++) {
       textAlign(LEFT, CENTER);
       TableRow tr = scores.getRow(iScore);
-      if (tr.getInt("score") == score.score && tr.getString("name") == playerName) {
+      if (tr.getInt("score") == score.score && tr.getString("name") == name) {
         fill(255, 255, 0);
       } else {
         fill(255);
@@ -87,9 +97,11 @@ class HighScore {
   }
 
   void draw() {
-    drawScores();
-    mm.update();
-    mm.draw();
+    if (nameC.nameSet) {
+      drawScores();
+      mm.update();
+      mm.draw();
+    }
   }
 
   void save() {
