@@ -22,7 +22,7 @@ boolean devMode = false;
 
 ///////Testing/////////
 String testFileLocation = "data/testData.csv";
-boolean testing = true;
+boolean testing = false;
 Testing test;
 ///////////////////////
 
@@ -62,8 +62,8 @@ float planeWidth = 100;
 float planeHeight = 50;
 
 //Character Shop
-String[] characterNames = {"ducky_", "gunther_","owliver_","wally_"};
-int[] characterFrames = {2, 4, 7, 3};
+String[] characterNames = {"ducky_", "gunther_","owliver_","wally_","monsieurMallard_"};
+int[] characterFrames = {2, 4, 7, 3, 4};
 Animation[] characters = new Animation[characterNames.length];
 int selectedCharacter = 0;
 

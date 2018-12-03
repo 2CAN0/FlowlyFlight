@@ -12,7 +12,7 @@ class Stamina {
     staminaWidth = staminaLevel;
     staminaHeight = 30;
     staminaBarClr = color(0, 255, 0);
-    staminaDrain = 8;
+    staminaDrain = 6;
     staminaRegen = 1;
   }
 
@@ -30,9 +30,14 @@ class Stamina {
     stroke(255);
     fill(0, 0);
     rect(staminaBarX, staminaBarY, staminaMax, staminaHeight);
-    noStroke();
     fill(0, 255, 0);
     rect(staminaBarX, staminaBarY, staminaLevel, staminaHeight);
+    
+    // TODO - geen magic numbers!
+    textAlign(LEFT, CENTER);
+    textSize(20);
+    fill(0);
+    text("stamina", staminaBarX + 3, staminaHeight / 2);
   }
 }
 

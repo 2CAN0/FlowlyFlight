@@ -13,10 +13,17 @@ class ShopMenu {
   void buttons() {
     fill(255);
     stroke(0);
-    triangle (height / 2, width / 4, (height / 2) + 40, (width / 4) + 20, (height / 2) - 40, (width / 4) - 20);
-    triangle (height / 2, width / 4 * 3, (height / 2) + 40, (width / 4) + 20, (height / 2) - 40, (width / 4) - 20);
-    noFill();
+    strokeWeight(1);
+    triangle (608, 561, 654, 519, 654 ,603);                // TODO - geen magic numbers!
+    triangle (1312, 561, 1266, 519, 1266 ,603);             // TODO - geen magic numbers!
     noStroke();
+    
+    fill(0, 120);
+    rect(width / 4, height / 4 * 3, width / 2, 50);         // TODO - geen magic numbers!
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    fill(255);
+    text("Press ENTER to purchase or select", width / 2, height / 4 * 3 + 25);    // TODO - geen magic numbers!
   }
 
   void update() {
@@ -38,7 +45,7 @@ class ShopMenu {
   void draw() {
     image(fWall, 0, 0, width, height);
     float grow = 2;
-    characters[selectedCharacter].display(width/2 - player.w/2*grow, height/2 - player.h/2*grow, player.w*grow, player.h*grow);
+    characters[selectedCharacter].display(width/2 - player.w/2*grow, height/2 - player.h/2*grow, player.w*grow, player.h*grow);  
     buttons();
   }
 }

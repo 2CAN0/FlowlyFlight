@@ -17,7 +17,7 @@ class Player {
     w = 140;
     h = 80;
     clr = color(255, 0, 0);
-    bounceFriction = 1.2;
+    bounceFriction = 0.8;
     airFriction = 0.01;
     flappingPower = 2.5;
     bounceFrictionModifier = 2;
@@ -81,7 +81,7 @@ class Player {
     }
 
     // "Flapping" function
-    if (keysPressed[32] && stamina.staminaLevel > 0 && !hitGround && vx < 0) {
+    if (keysPressed[32] || keysPressed[ENTER] && stamina.staminaLevel > 0 && !hitGround && vx < 0) {
       vy -= flappingPower;
     }
 
