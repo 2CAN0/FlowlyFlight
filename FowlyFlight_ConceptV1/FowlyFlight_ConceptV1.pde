@@ -7,20 +7,6 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-<<<<<<< HEAD
-=======
-Minim Sound;
-AudioPlayer menutheme;
-AudioPlayer jump;
-AudioPlayer bounce;
-AudioPlayer hit;
-AudioPlayer coin_pickup;
-AudioPlayer gameOver;
-AudioPlayer explosion;
-AudioPlayer theme;
-
-
->>>>>>> 289441648fc838bbd7e7054ea6de0452798a1c5d
 void setup() {
   Sound = new Minim(this);
   menutheme = Sound.loadFile("menu1.mp3");

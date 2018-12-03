@@ -42,6 +42,7 @@ AudioPlayer hit;
 AudioPlayer coin_pickup;
 AudioPlayer gameOver;
 AudioPlayer explosion;
+AudioPlayer theme;
 boolean gameOverPlayer = false;
 
 //Menu

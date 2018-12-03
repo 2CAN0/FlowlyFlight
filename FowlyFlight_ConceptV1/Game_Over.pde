@@ -30,12 +30,7 @@ class GameOver {
       if (!gameOverPlayer) {
         gameOver.rewind();
         gameOver.play();
-<<<<<<< HEAD
-=======
         theme.pause();
-        hs.update(score.score, playerName);
-        hsUpdated = true;
->>>>>>> 289441648fc838bbd7e7054ea6de0452798a1c5d
       }
       hs.update(score.score);
       hs.draw();
