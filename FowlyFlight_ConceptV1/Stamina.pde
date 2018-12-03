@@ -17,7 +17,7 @@ class Stamina {
   }
 
   void update() {
-    if (keysPressed[32] && player.launched == true && staminaLevel > 0) {
+    if (keysPressed[32] && player.launched == true && staminaLevel > 0 || keysPressed[ENTER] && player.launched == true && staminaLevel > 0) {
       staminaLevel -= staminaDrain;
     } else {
       if (staminaLevel < staminaMax) {
@@ -33,7 +33,6 @@ class Stamina {
     fill(0, 255, 0);
     rect(staminaBarX, staminaBarY, staminaLevel, staminaHeight);
     
-    // TODO - geen magic numbers!
     textAlign(LEFT, CENTER);
     textSize(20);
     fill(0);

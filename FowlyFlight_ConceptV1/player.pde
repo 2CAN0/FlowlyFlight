@@ -81,7 +81,7 @@ class Player {
     }
 
     // "Flapping" function
-    if (keysPressed[32] || keysPressed[ENTER] && stamina.staminaLevel > 0 && !hitGround && vx < 0) {
+    if (keysPressed[32] && stamina.staminaLevel > 0 && !hitGround && vx < 0 || keysPressed[ENTER] && stamina.staminaLevel > 0 && !hitGround && vx < 0) {
       vy -= flappingPower;
     }
 

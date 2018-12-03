@@ -5,19 +5,29 @@ class ShopMenu {
   boolean changedSelected = false;
   Animation[] characters;
 
+  int arrowLeftPosX, arrowLeftPosY, arrowRightPosX, arrowRightPosY, arrowWidth, arrowHeight;
+
   ShopMenu (ArrayList<PImage> wall, Animation[] skins) {
     fWall = wall.get((int)random(0, wall.size()));
     characters = skins;
+
+    // Arrows
+    arrowLeftPosX = 608;
+    arrowLeftPosY = 561;
+    arrowRightPosX = 1312;
+    arrowRightPosY = 561;
+    arrowWidth = 46;
+    arrowHeight = 48;
   }
 
   void buttons() {
     fill(255);
     stroke(0);
     strokeWeight(1);
-    triangle (608, 561, 654, 519, 654 ,603);                // TODO - geen magic numbers!
-    triangle (1312, 561, 1266, 519, 1266 ,603);             // TODO - geen magic numbers!
+    triangle (arrowLeftPosX, arrowLeftPosY, arrowLeftPosX + arrowWidth, arrowLeftPosY - arrowHeight, arrowLeftPosX + arrowWidth, arrowLeftPosY + arrowHeight);                // TODO - geen magic numbers!
+    triangle (arrowRightPosX, arrowRightPosY, arrowRightPosX - arrowWidth, arrowRightPosY - arrowHeight, arrowRightPosX - arrowWidth, arrowRightPosY + arrowHeight);             // TODO - geen magic numbers!
     noStroke();
-    
+
     fill(0, 120);
     rect(width / 4, height / 4 * 3, width / 2, 50);         // TODO - geen magic numbers!
     textAlign(CENTER, CENTER);
