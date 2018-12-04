@@ -29,7 +29,7 @@ class HighScore {
 
   void createTable() {
     scores = new Table();
-    String[] devNames = {"2CAN0", "FSaurus", "Nino", "Mitchell", "Jay", "Luca", "Alex", "John", "AAA", "AAA"};
+    String[] devNames = {"2CAN0", "Frank", "Nino", "Mitch", "Jay", "Luca", "Alex", "John", "AAA", "AAA"};
     int[] plScores = {7000, 6000, 5000, 4000, 3000, 2000, 1000, 500, 250, 0};
     scores.addColumn("id");
     scores.addColumn("name");
