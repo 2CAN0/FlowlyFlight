@@ -25,7 +25,7 @@ class PlayerLauncher {
   }
 
   void update() {
-    if (keysPressed[32] && !player.launched) {
+    if (keysPressed[32] && !player.launched && !enterPressed) {
       player.vx = launchSpeed * speedVariable; // Player speed assign!
       coin.vx = player.vx;
       player.launched = true;
