@@ -1,20 +1,28 @@
 //Luca Ruiters - 500796991
+
+PImage coinImg;
+
 class Collectables {
   float x, 
     y, 
     vx, 
-    radius;
+    radius, 
+    angle;
+  
 
-  Collectables(float velocityX) {
+  Collectables(float velocityX, PImage co) {
     y = random(0, height/3*2 - radius);
     x = random(width, width + 100);
     vx = velocityX;
     radius = 50;
     timerStart();
+    coinImg = co;
+    angle = 0;
   }
 
   void update() {
     x += vx;
+    angle += 0.09;
   }
 
   void timerStart() {
@@ -35,7 +43,7 @@ class Collectables {
       println("Coins: "+(int)collectedCoins);
     } else {
       fill(#FFF158);
-      ellipse(x, y, radius*2, radius*2);
+      image(coinImg, x, y, radius*2, radius*2);
       //println("X: "+x+ " Y:"+ y+" xVelocity: "+vx +" TimeElapsed: "+timer2.second());
     }
   }

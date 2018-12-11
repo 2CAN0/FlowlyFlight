@@ -50,7 +50,7 @@ void restart() {
   movingWalls.clear();
   setupWall(); 
   playerLauncher = new PlayerLauncher(canon);
-  coin = new Collectables(player.vx);
+  coin = new Collectables(player.vx, coinImg);
   collectedCoins = 0;
   setupScore();
   setupStamina();

@@ -63,7 +63,13 @@ ShopMenu menuShop;
 float collectedCoins = 0;
 StopWatchTimer timer2;
 
+String[] coinNames = {"coin_.png"};
+PImage[] coinImages = new PImage[coinNames.length];
+Animation[] coinA = new Animation[coinNames.length];
+
 //Enemies
+
+
 ///Enemy Buildings
 final int MAX_BUILDINGS = 2;
 String[] buildingNames = {"Gebouw.png"};
@@ -106,7 +112,9 @@ void mainSetup() {
 
   //Collectables
   timer2 = new StopWatchTimer();
-
+  
+  coinImg = loadImage("Sprites/coin_0.png");
+  
   //Enemies
   timer = new StopWatchTimer();
   plane = loadImage("Sprites/plane.png");
@@ -122,7 +130,7 @@ void mainSetup() {
   hs = new HighScore(hsLocation, MAX_SCORES, 350, 400, nameCreater);
   canon = loadImage("Sprites/canon_0.png");
   playerLauncher = new PlayerLauncher(canon);
-  coin = new Collectables(player.vx);
+  coin = new Collectables(player.vx, coinImg);
   playerTotalStam = player.vx;
   totalPlayerVx = player.vx;
   dead = new GameOver(width/2, height/2 - 40, 225, 100, "OMG You dieded!\n\n Press A to restart", 30);
