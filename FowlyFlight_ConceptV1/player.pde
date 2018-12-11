@@ -45,6 +45,7 @@ class Player {
       jump.rewind();
       jump.play();
       y = height - h;
+      systems.add(new ParticleSystem(MAX_FEATPARTS, new PVector(x, y + h/2), featVelo, featSize, featWind, featGravity, featSpan, "feather", feather));
     }
 
     // Gravity & Air Friction funtion
@@ -78,6 +79,7 @@ class Player {
     if (y <= 0) {
       y = 0;
       vy = 0.5;
+      systems.add(new ParticleSystem(MAX_FEATPARTS, new PVector(x, y - h/2), featVelo, featSize, featWind, featGravity, featSpan, "feather", feather));
     }
 
     // "Flapping" function
