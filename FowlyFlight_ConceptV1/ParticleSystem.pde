@@ -32,8 +32,22 @@ class ParticleSystem {
         particles.add(new FeatherParticle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size, feat));    // Add "num" amount of particles to the arraylist
     }
   }
-
-
+  
+  ParticleSystem(int num, PVector l, PVector v, PVector s, float w, float g, float ls, String typo, float angle) {
+    particles = new ArrayList<Particle>();   // Initialize the arraylist
+    origin = new PVector(random(0,width + height), l.y);                        // Store the origin point
+    velocity = v.copy();
+    size = s.copy();
+    wind = w;
+    gravity = g;
+    lifespan = ls;
+    type = typo;
+    for (int i = 0; i < num; i++) {
+      if (type.toLowerCase() == "feather")
+        particles.add(new RainParticle(origin, lifespan, wind, gravity, velocity, size, angle));    // Add "num" amount of particles to the arraylist
+    }
+  }
+  
   void run() {
     // Cycle through the ArrayList backwards, because we are deleting while iterating
     for (int i = particles.size()-1; i >= 0; i--) {
@@ -90,6 +104,13 @@ class FeatherParticle extends Particle {
   }
 }
 
+void rainChange(){
+  if(random(0,2) == 1)
+     systems.add(new ParticleSystem(MAX_RAINPARTS, new PVector(width/2, -rainSize.y), rainVelo, rainSize, rainWind, rainGravity, rainSpan, "Rain", 0)); 
+  else
+    systems.clear();
+}
+
 class RainParticle extends Particle {
   float angle;
 
@@ -97,19 +118,22 @@ class RainParticle extends Particle {
     super(l, span, wind, gravity, v, s);
     position.x = random(0, width + height);
     angle = a;
+    velocity.x *= player.vx/10;
   }
 
   void update() {
-    super.update(); 
+    velocity.add(acceleration);
+    position.add(velocity);
     angle += 0.05;
   }
 
   void display() {
+    println("It's raining");
     pushMatrix(); 
     translate(position.x, position.y);
     rotate(angle);
     stroke(62, 203, 245, lifespan);
-    line(0, 0, size.x, 0);
+    line(0, 0, 25, 0);
     noStroke();
     popMatrix();
   }
