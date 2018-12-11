@@ -18,12 +18,12 @@ NameCreater nameCreater;
 
 
 /////DEV-MODE BEVAT coole en rare mechanics xD//////
-boolean devMode = false;
+boolean devMode = true;
 ////////////////////////////////////////////////////
 
 ///////Testing/////////
 String testFileLocation = "data/testData.csv";
-boolean testing = true;
+boolean testing = false;
 Testing test;
 ///////////////////////
 
@@ -32,6 +32,26 @@ float defaultOverallVX;
 float playerTotalStam;
 float totalPlayerVx;
 PImage wallpaper;
+
+//Particle System
+ArrayList<ParticleSystem> systems = new ArrayList<ParticleSystem>();
+
+//Weather Particle
+PVector rainSize = new PVector(25, 25);
+PVector rainVelo = new PVector(random(-1, -0.0002), random(0, 1));
+final int MAX_RAINPARTS = 100;
+float rainWind = 0.05;
+float rainGravity = 0.05;
+float rainSpan = 255;
+
+//Feather Particle
+PImage feather;
+PVector featSize = new PVector(80, 50);
+PVector featVelo = new PVector(random(-1,1), random(-1,1));
+final int MAX_FEATPARTS = 10;
+float featWind = 0.01;
+float featGravity = 0;
+float featSpan = 255;
 
 //Audio
 Minim Sound;
@@ -84,7 +104,7 @@ float planeWidth = 100;
 float planeHeight = 50;
 
 //Character Shop
-String[] characterNames = {"ducky_", "gunther_","owliver_","wally_","monsieurMallard_"};
+String[] characterNames = {"ducky_", "gunther_", "owliver_", "wally_", "monsieurMallard_"};
 int[] characterFrames = {2, 4, 7, 3, 4};
 Animation[] characters = new Animation[characterNames.length];
 int selectedCharacter = 0;
@@ -102,10 +122,10 @@ float ttlW = 340;
 void mainSetup() {
   //Test
   test = new Testing(testFileLocation);
-  
+
   //NameCreater
   nameCreater = new NameCreater(6);
-  
+
   //Wallpaper
   wall.add(loadImage("Sprites/backGround.png"));
   wall.add(loadImage("Sprites/backGround2.png"));
@@ -125,21 +145,24 @@ void mainSetup() {
     buildingImages[iBuilding] = loadImage("Sprites/"+buildingNames[iBuilding]);
   }
   
+  //Particle
+  feather = loadImage("Sprites/feather.png");
+
   //General
   player = new Player();
   hs = new HighScore(hsLocation, MAX_SCORES, 350, 400, nameCreater);
-  canon = loadImage("Sprites/canon_0.png");
+  canon = loadImage("Sprites/canon.png");
   playerLauncher = new PlayerLauncher(canon);
   coin = new Collectables(player.vx, coinImg);
   playerTotalStam = player.vx;
   totalPlayerVx = player.vx;
   dead = new GameOver(width/2, height/2 - 40, 225, 100, "OMG You dieded!\n\n Press A to restart", 30);
   menu = new Menu(options, gameName, wall);
-  
-  for(int iChar = 0; iChar < characterNames.length; iChar++){
-     characters[iChar] = new Animation(characterNames[iChar], characterFrames[iChar]); 
+
+  for (int iChar = 0; iChar < characterNames.length; iChar++) {
+    characters[iChar] = new Animation(characterNames[iChar], characterFrames[iChar]);
   }
-  
+
   menuShop = new ShopMenu(wall, characters);
 
   //player

@@ -18,9 +18,10 @@ void setup() {
   explosion = Sound.loadFile("Explosion.wav");
   theme = Sound.loadFile("menu2.mp3");
   menutheme.play();
-  size(1920, 1080, P3D);
+  size(1600, 900, P3D);
+  //fullScreen(P2D);
   noStroke();
-  noCursor();
+  //noCursor();
   smooth();
   frameRate(60);
   background(30);
@@ -32,6 +33,7 @@ void draw() {
     menu.update();
     menu.draw();
   } else if (playGame && !inShop) {
+    tint(255, 255);
     if (!dead.status) {
       background(30);
       drawWall();
@@ -53,6 +55,16 @@ void draw() {
   } else if (inShop) {
     menuShop.update();
     menuShop.draw();
+  }
+
+  for (int iPs = systems.size() - 1; iPs > 0; iPs--) {
+    ParticleSystem pls = systems.get(iPs);
+    pls.run();
+    if (pls.particles.size() == 0) {
+      systems.remove(iPs);
+    }
+    if(pls.type.toLowerCase() == "rain")
+      pls.addParticle();
   }
 
   if (devMode) {
@@ -86,6 +98,6 @@ void keyReleased() {
   } else if (inShop) {
     menuShop.changedSelected = false;
   }
-  
+
   hs.nameC.changed = false;
 }

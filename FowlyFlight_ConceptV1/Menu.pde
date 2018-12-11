@@ -73,6 +73,8 @@ class Menu {
             test.startTesting(); 
             test.starts += 1;
          }
+         
+         rainChange();
       } else if (btn.text == options[1]){
          inMenu = false;
          inShop = true;                                          

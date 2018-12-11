@@ -211,6 +211,7 @@ class HighScore {
           gameOver.pause();
           theme.rewind();
           theme.play();
+          rainChange();
         } else if (btn.text == options[1]) {
           restart();
           inMenu = true;
