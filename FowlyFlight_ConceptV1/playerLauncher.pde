@@ -39,7 +39,7 @@ class PlayerLauncher {
 
   void update() {
     if (keysPressed[32] && !player.launched && !enterPressed) {
-      systems.add(new ParticleSystem(MAX_FEATPARTS, new PVector(x, y - h/2), featVelo, featSize, featWind, featGravity, featSpan, "feather", feather));
+      //systems.add(new ParticleSystem(MAX_FEATPARTS, new PVector(x, y - h/2), featVelo, featSize, featWind, featGravity, featSpan, "feather", feather));
       player.vx = launchSpeed * speedVariable; // Player speed assign!
       coin.vx = player.vx;
       player.launched = true;

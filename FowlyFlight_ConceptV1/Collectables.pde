@@ -49,8 +49,11 @@ class Collectables {
   }
 
   boolean hitDetected(Player pl, Collectables coin) {
-    boolean x = (pl.x > coin.x - coin.radius && pl.x < coin.x + coin.radius) || (pl.x + pl.w > coin.x - coin.radius && pl.x + pl.w < coin.x + coin.radius);
-    boolean y = (pl.y > coin.y - coin.radius && pl.y < coin.y + coin.radius) || (pl.y + pl.h > coin.y - coin.radius && pl.y + pl.h < coin.y + coin.radius);
+    boolean x = (pl.x > coin.x - coin.radius && pl.x < coin.x + coin.radius) || 
+                (pl.x + pl.w > coin.x - coin.radius && pl.x + pl.w < coin.x + coin.radius);
+    
+    boolean y = (pl.y > coin.y - coin.radius && pl.y < coin.y + coin.radius) || 
+                (pl.y + pl.h > coin.y - coin.radius && pl.y + pl.h < coin.y + coin.radius);
 
     return (x && y);
   }

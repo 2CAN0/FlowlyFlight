@@ -17,7 +17,7 @@ void setup() {
   gameOver = Sound.loadFile("gameOver1.mp3");
   explosion = Sound.loadFile("Explosion.wav");
   theme = Sound.loadFile("menu2.mp3");
-  menutheme.play();
+
   size(1600, 900, P3D);
   //fullScreen(P2D);
   noStroke();
@@ -63,8 +63,10 @@ void draw() {
     if (pls.particles.size() == 0) {
       systems.remove(iPs);
     }
-    if (pls.type.toLowerCase() == "rain")
-      pls.addParticle();
+    if (extremeWeather) {
+      pls.addRainDrop();
+      //println("Added a new Rain Particle");
+    }
   }
 
   if (devMode) {

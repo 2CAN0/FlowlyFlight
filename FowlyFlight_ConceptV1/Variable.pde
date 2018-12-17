@@ -39,10 +39,11 @@ ArrayList<ParticleSystem> systems = new ArrayList<ParticleSystem>();
 //Weather Particle
 PVector rainSize = new PVector(25, 25);
 PVector rainVelo = new PVector(random(-1, -0.0002), random(0, 1));
-final int MAX_RAINPARTS = 100;
+final int MAX_RAINPARTS = 50;
 float rainWind = 0.05;
 float rainGravity = 0.05;
 float rainSpan = 255;
+boolean extremeWeather;
 
 //Feather Particle
 PImage feather;

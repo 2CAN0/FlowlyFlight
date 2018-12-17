@@ -3,6 +3,7 @@ class ParticleSystem {
   ArrayList<Particle> particles;    // An arraylist for all the particles
   PVector origin, velocity, size;
   float wind, gravity, lifespan;// An origin point for where particles are birthed
+  float factor;
   String type;
 
   ParticleSystem(int num, PVector l, PVector v, PVector s, float w, float g, float ls, String typo) {
@@ -15,10 +16,11 @@ class ParticleSystem {
     type = typo;
     for (int i = 0; i < num; i++) {
       if (type.toLowerCase() == "simple")
-        particles.add(new Particle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size));    // Add "num" amount of particles to the arraylist
+        particles.add(new Particle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size));    // location, lifespan, wind, gravity, velocity, size
     }
   }
 
+  //Constructer for the Feather PS
   ParticleSystem(int num, PVector l, PVector v, PVector s, float w, float g, float ls, String typo, PImage feat) {
     particles = new ArrayList<Particle>();   // Initialize the arraylist
     origin = l.copy();                        // Store the origin point
@@ -28,11 +30,12 @@ class ParticleSystem {
     lifespan = ls;
     type = typo;
     for (int i = 0; i < num; i++) {
-      if (type.toLowerCase() == "feather")
-        particles.add(new FeatherParticle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size, feat));    // Add "num" amount of particles to the arraylist
+        particles.add(new FeatherParticle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size, feat));    // location, lifespan, wind, gravity, velocity, size, image
     }
   }
 
+
+  //Constructer for the rain PS
   ParticleSystem(int num, PVector l, PVector v, PVector s, float w, float g, float ls, String typo, float angle) {
     particles = new ArrayList<Particle>();   // Initialize the arraylist
     origin = new PVector(random(0, width + height), l.y);                        // Store the origin point
@@ -42,9 +45,9 @@ class ParticleSystem {
     gravity = g;
     lifespan = ls;
     type = typo;
+    factor = 100f;
     for (int i = 0; i < num; i++) {
-      if (type.toLowerCase() == "feather")
-        particles.add(new RainParticle(origin, lifespan, wind, gravity, velocity, size, angle));    // Add "num" amount of particles to the arraylist
+      particles.add(new RainParticle(origin, lifespan, random(player.vx)/factor, gravity, velocity, size, angle));    // location, lifespan, wind, gravity, velocity, size
     }
   }
 
@@ -59,10 +62,17 @@ class ParticleSystem {
     }
   }
 
+  void addRainDrop() {
+    particles.add(new RainParticle(origin, lifespan, random(player.vx)/factor, gravity, velocity, size, 0));
+  }
+
   void addParticle() {
     Particle p;
     // Add either a Particle or CrazyParticle to the system
-    p = new Particle(origin, lifespan, wind, gravity, velocity, size);
+    if (extremeWeather) {
+      p = new RainParticle(origin, lifespan, wind, gravity, velocity, size, 0);
+    } else
+      p = new Particle(origin, lifespan, wind, gravity, velocity, size);
     particles.add(p);
   }
 
@@ -83,7 +93,6 @@ class FeatherParticle extends Particle {
   FeatherParticle(PVector l, float span, float wind, float gravity, PVector v, PVector s, PImage f) {
     super(l, span, wind, gravity, v, s);
     feather = f;
-    println("D: "+(v.y/v.x));
     angle =  atan(v.y/v.x);
   }
 
@@ -104,37 +113,41 @@ class FeatherParticle extends Particle {
   }
 }
 
+//Systeem om te kiezen of regent of niet.
 void rainChange() {
-  if (random(0, 2) == 1)
-    systems.add(new ParticleSystem(MAX_RAINPARTS, new PVector(width/2, -rainSize.y), rainVelo, rainSize, rainWind, rainGravity, rainSpan, "Rain", 0)); 
-  else
+  int wrmWerktNiet = (int)Math.floor(random(0, 5) % 2);
+  if ( wrmWerktNiet == 0) {
+    systems.add(new ParticleSystem(MAX_RAINPARTS, new PVector(width/2, -rainSize.y), rainVelo, rainSize, rainWind, rainGravity, rainSpan, "Rain", 0));
+    extremeWeather = true;
+    println("it should rain now");
+  } else {
     systems.clear();
+    extremeWeather = false;
+    println("The weather forecast is sunny atm");
+  }
 }
 
 class RainParticle extends Particle {
   float angle;
-
-  RainParticle(PVector l, float span, float wind, float gravity, PVector v, PVector s, float a) {
-    super(l, span, wind, gravity, v, s);
-    position.x = random(0, width + height);
-    angle = a;
-    velocity.x *= player.vx/10;
+  RainParticle(PVector l, float span, float wind, float gravity, PVector v, PVector s, float r) {
+    super(l, span, wind, gravity, v, s); //l - location; v - velocity; s - size;
+    position = new PVector(random(-10, width + height), random(-10, 0));
+    lifespan = 600;
+    angle = r;
+    //velocity.x = -5;
   }
 
   void update() {
-    velocity.add(acceleration);
-    position.add(velocity);
-    angle += 0.05;
+    super.update(); 
+    angle += random(0.01);
   }
 
   void display() {
-    println("It's raining");
-    pushMatrix(); 
+    pushMatrix();
     translate(position.x, position.y);
+    stroke(39, 171, 240, lifespan);
     rotate(angle);
-    stroke(62, 203, 245, lifespan);
     line(0, 0, 25, 0);
-    noStroke();
     popMatrix();
   }
 }
