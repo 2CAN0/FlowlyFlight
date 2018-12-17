@@ -16,20 +16,20 @@ class Menu {
   Menu(String[] text, String GN, ArrayList<PImage> img) {
     options = new String[text.length];
     options = text;
-    
+
     gameName = GN;
-    
+
     AmountButtons = options.length;
     float tempW = 250;
     float tempH = 85;
     float tempX = width/2;
     float tempY = height / 2 - tempH *(AmountButtons/2);
-    
+
     wallpaper = img;
-    fWall = wallpaper.get((int)random(0,wallpaper.size()));
-    
+    fWall = wallpaper.get((int)random(0, wallpaper.size()));
+
     for (int iButton = 0; iButton < AmountButtons; iButton++) {
-      if (iButton == 0){
+      if (iButton == 0) {
         buttons.add(new Button(tempX - tempW/2, tempY, tempW, tempH, options[iButton]));
         Button btn = buttons.get(0);
         btn.selected = true;
@@ -58,42 +58,42 @@ class Menu {
       btn2.selected = false;
       changedSelected = true;
     }
-    
+
     if ((keysPressed[ENTER] || keysPressed[32]) && !enterPressed) {
       enterPressed = true;
       Button btn = buttons.get(selectedIndex);
-      if (btn.text == options[0]){
-         inMenu = false;
-         playGame = true;
-         menutheme.pause();
-         theme.rewind();
-         theme.play();
-         
-         if(testing){
-            test.startTesting(); 
-            test.starts += 1;
-         }
-         
-         rainChange();
-      } else if (btn.text == options[1]){
-         inMenu = false;
-         inShop = true;                                          
-      } else if (btn.text == options[2]){
-         exit(); 
+      if (btn.text == options[0]) {
+        inMenu = false;
+        playGame = true;
+        menutheme.pause();
+        theme.rewind();
+        theme.play();
+
+        if (testing) {
+          test.startTesting(); 
+          test.starts += 1;
+        }
+
+        rainChange();
+      } else if (btn.text == options[1]) {
+        inMenu = false;
+        inShop = true;
+      } else if (btn.text == options[2]) {
+        exit();
       }
     }
   }
 
   void draw() {
-    image(fWall, 0,0, width, height);
+    image(fWall, 0, 0, width, height);
     Button tBtn = buttons.get(0);
     textFont(font, 100);
     textAlign(CENTER, CENTER);
     text(gameName, width/2, tBtn.location.y/2 - spacing);
     textAlign(TOP, LEFT);
-    for (int iButton = 0; iButton < AmountButtons; iButton++){
-       Button btn = buttons.get(iButton);
-       btn.draw();
+    for (int iButton = 0; iButton < AmountButtons; iButton++) {
+      Button btn = buttons.get(iButton);
+      btn.draw();
     }
   }
 
@@ -107,7 +107,7 @@ class Menu {
       size = new PVector(w, h);
       text = info;
     }
-    
+
     boolean mouseHover() {
       boolean x = (mouseX > location.x && mouseX < location.x + size.x);
       boolean y = (mouseY > location.y && mouseY < location.y + size.y);
@@ -142,7 +142,7 @@ class Menu {
         noStroke();
         rect(location.x, location.y, size.x, size.y);
       }
- 
+
       fill(255);
       textFont(font, 30);
       textAlign(CENTER, CENTER);

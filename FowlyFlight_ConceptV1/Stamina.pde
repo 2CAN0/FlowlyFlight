@@ -32,7 +32,7 @@ class Stamina {
     rect(staminaBarX, staminaBarY, staminaMax, staminaHeight);
     fill(0, 255, 0);
     rect(staminaBarX, staminaBarY, staminaLevel, staminaHeight);
-    
+
     textAlign(LEFT, CENTER);
     textSize(20);
     fill(0);

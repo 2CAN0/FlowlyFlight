@@ -8,7 +8,7 @@ class Collectables {
     vx, 
     radius, 
     angle;
-  
+
 
   Collectables(float velocityX, PImage co) {
     y = random(0, height/3*2 - radius);

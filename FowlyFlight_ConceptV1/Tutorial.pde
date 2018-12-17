@@ -17,7 +17,7 @@ class Tutorial {
     size = new PVector(ttlW, ttlH);
     text = ttlTextTutorial;
     ttlSpacing = titleSpacing;
-    
+
     minSize = size.x - .12;
     maxSize = size.x + .12;
     xShrink = minSize/size.x;

@@ -36,8 +36,8 @@ class soundBank {
 
   // trigger a loaded sample by fileName
   void trigger(String sampleFileName) {
-//    if (!sampleFileName.endsWith(".wav") &&  samples.containsKey(sampleFileName + ".wav"))
-//      sampleFileName += ".wav";
+    //    if (!sampleFileName.endsWith(".wav") &&  samples.containsKey(sampleFileName + ".wav"))
+    //      sampleFileName += ".wav";
     if (samples.containsKey(sampleFileName)) 
       samples.get(sampleFileName).trigger();
   }

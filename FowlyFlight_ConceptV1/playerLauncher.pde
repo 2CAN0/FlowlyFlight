@@ -20,7 +20,7 @@ class PlayerLauncher {
   }
 
   void launcherAparatus() {
-    if(!player.launched)
+    if (!player.launched)
       angle += 0.02;
     else
       angle = 0;
@@ -31,8 +31,8 @@ class PlayerLauncher {
     x += cos(angle*1.5) * 1;
     translate(x, y);
     rotate(PI/rotation);
-    
-    image(canon, 0,0 , w, h);
+
+    image(canon, 0, 0, w, h);
     popMatrix();
     noStroke();
   }

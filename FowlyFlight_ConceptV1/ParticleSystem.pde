@@ -32,10 +32,10 @@ class ParticleSystem {
         particles.add(new FeatherParticle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size, feat));    // Add "num" amount of particles to the arraylist
     }
   }
-  
+
   ParticleSystem(int num, PVector l, PVector v, PVector s, float w, float g, float ls, String typo, float angle) {
     particles = new ArrayList<Particle>();   // Initialize the arraylist
-    origin = new PVector(random(0,width + height), l.y);                        // Store the origin point
+    origin = new PVector(random(0, width + height), l.y);                        // Store the origin point
     velocity = v.copy();
     size = s.copy();
     wind = w;
@@ -47,7 +47,7 @@ class ParticleSystem {
         particles.add(new RainParticle(origin, lifespan, wind, gravity, velocity, size, angle));    // Add "num" amount of particles to the arraylist
     }
   }
-  
+
   void run() {
     // Cycle through the ArrayList backwards, because we are deleting while iterating
     for (int i = particles.size()-1; i >= 0; i--) {
@@ -104,9 +104,9 @@ class FeatherParticle extends Particle {
   }
 }
 
-void rainChange(){
-  if(random(0,2) == 1)
-     systems.add(new ParticleSystem(MAX_RAINPARTS, new PVector(width/2, -rainSize.y), rainVelo, rainSize, rainWind, rainGravity, rainSpan, "Rain", 0)); 
+void rainChange() {
+  if (random(0, 2) == 1)
+    systems.add(new ParticleSystem(MAX_RAINPARTS, new PVector(width/2, -rainSize.y), rainVelo, rainSize, rainWind, rainGravity, rainSpan, "Rain", 0)); 
   else
     systems.clear();
 }

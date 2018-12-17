@@ -3,8 +3,8 @@ class Score {
   float w;
   boolean scoreUpdated = false;
 
-  Score(float scoreW){
-     w = scoreW; 
+  Score(float scoreW) {
+    w = scoreW;
   }
 
   void update() {

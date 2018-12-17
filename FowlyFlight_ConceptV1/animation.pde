@@ -3,7 +3,7 @@ class Animation {
   int imageCount;
   int frame;
   int fps = 12;
-  
+
   Animation(String imagePrefix, int count) {
     imageCount = count;
     images = new PImage[imageCount];
@@ -16,11 +16,11 @@ class Animation {
   }
 
   void display(float xpos, float ypos, float w, float h) {
-    if(frameCount % fps == 0)
+    if (frameCount % fps == 0)
       frame = (frame+1) % imageCount;
     image(images[frame], xpos, ypos, w, h);
   }
-  
+
   int getWidth() {
     return images[0].width;
   }

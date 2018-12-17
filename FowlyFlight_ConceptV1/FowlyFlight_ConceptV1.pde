@@ -63,7 +63,7 @@ void draw() {
     if (pls.particles.size() == 0) {
       systems.remove(iPs);
     }
-    if(pls.type.toLowerCase() == "rain")
+    if (pls.type.toLowerCase() == "rain")
       pls.addParticle();
   }
 

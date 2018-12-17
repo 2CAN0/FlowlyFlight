@@ -18,7 +18,7 @@ NameCreater nameCreater;
 
 
 /////DEV-MODE BEVAT coole en rare mechanics xD//////
-boolean devMode = true;
+boolean devMode = false;
 ////////////////////////////////////////////////////
 
 ///////Testing/////////
@@ -47,7 +47,7 @@ float rainSpan = 255;
 //Feather Particle
 PImage feather;
 PVector featSize = new PVector(80, 50);
-PVector featVelo = new PVector(random(-1,1), random(-1,1));
+PVector featVelo = new PVector(random(-1, 1), random(-1, 1));
 final int MAX_FEATPARTS = 10;
 float featWind = 0.01;
 float featGravity = 0;
@@ -132,9 +132,9 @@ void mainSetup() {
 
   //Collectables
   timer2 = new StopWatchTimer();
-  
+
   coinImg = loadImage("Sprites/coin_0.png");
-  
+
   //Enemies
   timer = new StopWatchTimer();
   plane = loadImage("Sprites/plane.png");
@@ -144,7 +144,7 @@ void mainSetup() {
   for (int iBuilding = 0; iBuilding < buildingNames.length; iBuilding++) {
     buildingImages[iBuilding] = loadImage("Sprites/"+buildingNames[iBuilding]);
   }
-  
+
   //Particle
   feather = loadImage("Sprites/feather.png");
 

@@ -7,12 +7,12 @@ class StopWatchTimer {
     startTime = millis();
     running = true;
   }
-  
+
   void stop() {
     stopTime = millis();
     running = false;
   }
-  
+
   int getElapsedTime() {
     int elapsed;
     if (running) {
@@ -22,15 +22,15 @@ class StopWatchTimer {
     }
     return elapsed;
   }
-  
+
   int second() {
     return (getElapsedTime() / 1000) % 60;
   }
-  
+
   int minute() {
     return (getElapsedTime() / (1000*60)) % 60;
   }
-  
+
   int hour() {
     return (getElapsedTime() / (1000*60*60)) % 24;
   }

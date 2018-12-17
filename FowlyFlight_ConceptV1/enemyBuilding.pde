@@ -4,7 +4,7 @@ class EnemyBuilding {
     h, 
     w, 
     vx;
-    PImage img;
+  PImage img;
 
   EnemyBuilding(PImage[] imgList) {
     h = random(50, height/3);
@@ -28,12 +28,12 @@ class EnemyBuilding {
   }
 
   boolean hitDetected(Player p, EnemyBuilding e) {
-  // Als y2Onder groter is dan y1onder en y2Onder kleiner is dan y1Boven licht de het linker onder hoek er tussen
-  // Als y2Boven groter is dan y1Boven en kleinder is dan y1Onder licht de linker onder hoek in er tussen
-  boolean x = ((p.x > e.x && p.x < e.x + e.w) ||(p.x + p.w > e.x && p.x + p.w < e.x + e.w));
+    // Als y2Onder groter is dan y1onder en y2Onder kleiner is dan y1Boven licht de het linker onder hoek er tussen
+    // Als y2Boven groter is dan y1Boven en kleinder is dan y1Onder licht de linker onder hoek in er tussen
+    boolean x = ((p.x > e.x && p.x < e.x + e.w) ||(p.x + p.w > e.x && p.x + p.w < e.x + e.w));
     boolean y = ((p.y > e.y && p.y < e.y + e.h) || (p.y + p.h > e.y && p.y + p.h < e.y + e.h));
     return (x && y);
-}
+  }
 
   void update() {
     if (hitDetected(player, this)) {
@@ -57,7 +57,7 @@ class EnemyBuilding {
 
   void draw() {
     fill(255, 200);
-    image(img,x, y, w, h);
+    image(img, x, y, w, h);
     if (devMode) {
       fill(0, 0);
       stroke(255, 0, 0);

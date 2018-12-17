@@ -53,7 +53,6 @@ class NameCreater {
       for (character t : chars) {
         name += char(t.charCode);
       }
-      
     } else {   
       character c = chars.get(selectedIndex);
       c.selected = true;
@@ -66,10 +65,10 @@ class NameCreater {
       character c = chars.get(iChar);
       c.draw();
     }
-    
+
     fill(255);
     stroke(255);
-    textAlign(CENTER,CENTER);
+    textAlign(CENTER, CENTER);
     text("You got into the top 10", width/2, height/5);
     text("Press Enter to continue", width/2, height/5*4);
     textAlign(TOP, LEFT);

@@ -9,8 +9,8 @@ class Background {
     r1, r2, 
     g1, g2, 
     b1, b2;
-    
-    PImage wall;
+
+  PImage wall;
 
   Background(float playerVX, float layerHeight, float r, float g, float b, PImage wa) {
     w = width + 200;
@@ -68,7 +68,7 @@ class Background {
 
   void draw() {
     noStroke();
-    fill(r1, g1 , b1);
+    fill(r1, g1, b1);
     image(wall, x1, y1, w, h);
     fill(r2, g2, b2);
     image(wall, x2, y2, w, h);
@@ -78,7 +78,7 @@ class Background {
 }
 
 void setupWall() {             
-  movingWalls.add(new Background(player.vx, height, 0,0,random(128,256), wallpaper));
+  movingWalls.add(new Background(player.vx, height, 0, 0, random(128, 256), wallpaper));
   //movingWalls.add(new Background(player.vx, height/3, 0, random(128,256),0, wallpaper));
 }
 
