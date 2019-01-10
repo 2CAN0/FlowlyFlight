@@ -113,12 +113,17 @@ int selectedCharacter = 0;
 //Score
 Score score;
 float scoreWidth = 200;
+long prev;
 
 //Tutorial
 PImage spaceBar;
 PFont tutText;
 float ttlH = 160;
 float ttlW = 340;
+
+
+//nameCreator
+boolean inNameCreator = false;
 
 void mainSetup() {
   //Test

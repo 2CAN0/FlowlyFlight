@@ -44,12 +44,17 @@ class HighScore {
     println("Table Created");
   }
 
-  void update(double s) {
-    if (s >= scores.getInt(scores.getRowCount() - 1, "score") && !nameC.nameSet) {
-      nameC.update();
-      nameC.draw();
-    } else {
-      nameC.nameSet = true;
+  void update(int s) {    
+    int lowestScore = scores.getInt(scores.getRowCount() - 1, "score");
+    
+    if(!nameC.nameSet && s >= lowestScore){
+       if(!inNameCreator)
+         inNameCreator = true;
+         
+       nameC.update();
+       nameC.draw();
+    } else if(s < lowestScore && !nameC.nameSet){
+        nameC.nameSet = true;
     }
 
     if (!hsUpdated && nameC.nameSet) {
@@ -202,7 +207,7 @@ class HighScore {
         changedSelected = true;
       }
 
-      if ((keysPressed[ENTER] || keysPressed[32]) && !enterPressed) {
+      if ((keysPressed[ENTER]) && !enterPressed) {
         enterPressed = true;
         Button btn = buttons.get(selectedIndex);
         if (btn.text == options[0]) {

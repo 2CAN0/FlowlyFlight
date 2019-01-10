@@ -1,5 +1,5 @@
 class Score {
-  float score;
+  int score;
   float w;
   boolean scoreUpdated = false;
 

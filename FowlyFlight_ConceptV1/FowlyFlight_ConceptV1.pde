@@ -86,6 +86,12 @@ void draw() {
 void keyPressed() {  
   if (keyCode < KEY_LIMIT) 
     keysPressed[keyCode] = true;
+    if(inNameCreator && keyCode > 48 && keyCode < 90){
+      hs.nameC.chars[hs.nameC.selectedIndex].charCode = keyCode;
+      hs.nameC.changed = true;
+      hs.nameC.selectedIndex++;
+      hs.nameC.chars[hs.nameC.selectedIndex - 1].selected = false;
+    }
 }
 
 void keyReleased() {

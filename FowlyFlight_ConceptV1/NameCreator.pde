@@ -1,3 +1,7 @@
+/*
+*@author: Luca Ruiters
+*/
+
 class NameCreater {
   PVector position;
   float size;
@@ -6,27 +10,28 @@ class NameCreater {
   boolean changed = false;
   boolean nameSet = false;
 
-  ArrayList<character> chars = new ArrayList<character>();
+  character[] chars;
 
   NameCreater(float amount) {
     position = new PVector(width/2, height/2);
     size = amount;
+    chars = new character[(int)amount];
     fontSize = 40;
     for (int iChar = 0; iChar < size; iChar++) {
       if (iChar == 0) {
         try {
-          chars.add(new character(width/2 - size/2*fontSize, height/2, name.charAt(iChar)));
+          chars[iChar] = new character(width/2 - size/2*fontSize, height/2, name.charAt(iChar));
         }
         catch (Exception ex) {
-          chars.add(new character(width/2 - size/2*fontSize, height/2, char('a')));
+          chars[iChar] = new character(width/2 - size/2*fontSize, height/2, char('a'));
         }
       } else {
-        character prChar = chars.get(iChar - 1);
+        character prChar = chars[iChar - 1];
         try {
-          chars.add(new character(prChar.position.x + 5 + fontSize, height/2, name.charAt(iChar)));
+          chars[iChar] = (new character(prChar.position.x + 5 + fontSize, height/2, name.charAt(iChar)));
         } 
         catch (Exception ex) {
-          chars.add(new character(prChar.position.x + 5 + fontSize, height/2, char(' ')));
+          chars[iChar] = (new character(prChar.position.x + 5 + fontSize, height/2, char(' ')));
         }
       }
     }
@@ -36,13 +41,13 @@ class NameCreater {
     if (keysPressed[LEFT] && selectedIndex > 0 && !changed) {
       selectedIndex--;
       changed = true;
-      character prevC = chars.get(selectedIndex + 1);
+      character prevC = chars[selectedIndex + 1];
       prevC.selected = false;
     }
     if (keysPressed[RIGHT] && selectedIndex < size - 1 && !changed) {
       selectedIndex++;
       changed = true;
-      character prevC = chars.get(selectedIndex - 1);
+      character prevC = chars[selectedIndex - 1];
       prevC.selected = false;
     }
 
@@ -53,8 +58,9 @@ class NameCreater {
       for (character t : chars) {
         name += char(t.charCode);
       }
+      inNameCreator = false;
     } else {   
-      character c = chars.get(selectedIndex);
+      character c = chars[selectedIndex];
       c.selected = true;
       c.update();
     }
@@ -62,7 +68,7 @@ class NameCreater {
 
   void draw() {
     for (int iChar = 0; iChar < size; iChar++) {
-      character c = chars.get(iChar);
+      character c = chars[iChar];
       c.draw();
     }
 
@@ -86,17 +92,13 @@ class NameCreater {
 
     void update() {
       if (selected) {
-        if (keysPressed[DOWN] && !changed) {
+        if (keysPressed[DOWN] && charCode > 48 && !changed) {
           charCode++;
           changed = true;
         }
-        if (keysPressed[UP] && !changed) {
+        if (keysPressed[UP] && charCode < 90 && !changed) {
           charCode--;
           changed = true;
-        }
-
-        if (keyPressed && !changed) {
-          charCode = char(keyCode);
         }
       }
     }
