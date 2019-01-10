@@ -72,7 +72,7 @@ class ParticleSystem {
     if (extremeWeather) {
       p = new RainParticle(origin, lifespan, wind, gravity, velocity, size, 0);
     } else
-      p = new Particle(origin, lifespan, wind, gravity, velocity, size);
+      p = new Particle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size);
     particles.add(p);
   }
 
@@ -161,7 +161,7 @@ class Particle {
 
   Particle(PVector l, float span, float wind, float gravity, PVector v, PVector s) {
     acceleration = new PVector(wind, gravity);
-    velocity = v.copy();
+    velocity = new PVector(random(-1,1), random(-1,1));
     position = l.copy();
     lifespan = span;
     size = s.copy();
