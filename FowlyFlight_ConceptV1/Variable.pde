@@ -42,8 +42,8 @@ float lvlSBtnSize = 50;
 
 //Background
 Background bg;
-String[] mapNames = {"day", "night", "gray"};
-int[] mapImages = {1, 1, 1}; //MAX_IMAGES is 5
+String[] mapNames = {"jungle", "mountain", "beach", "day", "night", "gray"};
+int[] mapImages = {1, 1,1,1, 1, 1}; //MAX_IMAGES is 5
 PImage[][] maps = new PImage[mapNames.length][5];
 PImage[] mapPreviews = new PImage[mapNames.length];
 
