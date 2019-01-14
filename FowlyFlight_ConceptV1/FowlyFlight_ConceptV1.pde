@@ -18,8 +18,8 @@ void setup() {
   explosion = Sound.loadFile("Explosion.wav");
   theme = Sound.loadFile("menu2.mp3");
 
-  size(1600, 900, P3D);
-  //fullScreen(P2D);
+  //size(1600, 900, P3D);
+  fullScreen(P2D);
   noStroke();
   //noCursor();
   smooth();
@@ -34,23 +34,29 @@ void draw() {
     menu.draw();
   } else if (playGame && !inShop) {
     tint(255, 255);
-    if (!dead.status) {
-      background(30);
-      drawWall();
-      drawBuilding();
-      enemyUpdate();
-      player.update();
-      playerLauncherUpdate();
-      if (player.launched)
-        player.draw();
-      collectableUpdate();
-      score.update();      
-      score.draw();
-      stamina.update();
-      stamina.draw();
+    if (!bgSelected) {
+      image(menu.fWall, 0,0,width, height);
+      lvlS.update();
+      lvlS.draw();
     } else {
-      dead.draw();
-      dead.update();
+      if (!dead.status) {
+        background(30);
+        drawWall();
+        drawBuilding();
+        enemyUpdate();
+        player.update();
+        playerLauncherUpdate();
+        if (player.launched)
+          player.draw();
+        collectableUpdate();
+        score.update();      
+        score.draw();
+        stamina.update();
+        stamina.draw();
+      } else {
+        dead.draw();
+        dead.update();
+      }
     }
   } else if (inShop) {
     menuShop.update();
@@ -63,7 +69,7 @@ void draw() {
     if (pls.particles.size() == 0) {
       systems.remove(iPs);
     }
-    if (extremeWeather) {
+    if (extremeWeather && weatherOn) {
       pls.addRainDrop();
       //println("Added a new Rain Particle");
     }
@@ -86,12 +92,12 @@ void draw() {
 void keyPressed() {  
   if (keyCode < KEY_LIMIT) 
     keysPressed[keyCode] = true;
-    if(inNameCreator && keyCode > 48 && keyCode < 90){
-      hs.nameC.chars[hs.nameC.selectedIndex].charCode = keyCode;
-      hs.nameC.changed = true;
-      hs.nameC.selectedIndex++;
-      hs.nameC.chars[hs.nameC.selectedIndex - 1].selected = false;
-    }
+  if (inNameCreator && keyCode > 48 && keyCode < 90) {
+    hs.nameC.chars[hs.nameC.selectedIndex].charCode = keyCode;
+    hs.nameC.changed = true;
+    hs.nameC.selectedIndex++;
+    hs.nameC.chars[hs.nameC.selectedIndex - 1].selected = false;
+  }
 }
 
 void keyReleased() {
@@ -108,4 +114,5 @@ void keyReleased() {
   }
 
   hs.nameC.changed = false;
+  lvlS.selectedChanged = false;
 }

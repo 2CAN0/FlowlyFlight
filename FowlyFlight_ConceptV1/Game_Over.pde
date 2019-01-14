@@ -22,7 +22,7 @@ class GameOver {
 
   void draw() {
     noStroke();
-    image(wallpaper, 0, 0, width, height );
+    image(bg.maps[0], 0, 0, width, height );
   }
 
   void update() {
@@ -47,8 +47,7 @@ void restart() {
   Buildings.clear();
   setupBuilding();
   player = new Player();
-  movingWalls.clear();
-  setupWall(); 
+  setupWallLvlS(); 
   playerLauncher = new PlayerLauncher(canon);
   coin = new Collectables(player.vx, coinImg);
   collectedCoins = 0;

@@ -15,7 +15,7 @@ class EnemyBuilding {
     img = imgList[(int)Math.floor(random(0, imgList.length))];
   }
 
-  void Move() {
+  void Move(Player pl) {
     if (x + w > 0) {
       x += vx;
     } else {
@@ -23,7 +23,7 @@ class EnemyBuilding {
       w = random(200, 300);
       x = random(width, width + 300);
       y = height - h;
-      vx = random(-15, -5);
+      vx = random(pl.vx/1.5, pl.vx);
     }
   }
 
@@ -35,7 +35,7 @@ class EnemyBuilding {
     return (x && y);
   }
 
-  void update() {
+  void update(Player pl) {
     if (hitDetected(player, this)) {
       println("You hit a flying enemy!!");
       if (!devMode)
@@ -44,7 +44,7 @@ class EnemyBuilding {
         //
       }
     } else {
-      Move();
+      Move(pl);
     }
 
     //if (hitDetection(x - player.radius, y - player.radius, x + player.radius, y + player.radius, player.x - player.radius, player.y - player.radius, player.x + player.radius, player.y + player.radius)) {
@@ -73,7 +73,7 @@ void drawBuilding() {
   if (player.vx != 0) {
     for (int iBuilding = 0; iBuilding < Buildings.size(); iBuilding++) {
       EnemyBuilding building = Buildings.get(iBuilding);
-      building.update();
+      building.update(player);
       building.draw();
     }
   }

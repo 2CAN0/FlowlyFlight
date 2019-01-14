@@ -49,13 +49,23 @@ class Collectables {
   }
 
   boolean hitDetected(Player pl, Collectables coin) {
-    boolean x = (pl.x > coin.x - coin.radius && pl.x < coin.x + coin.radius) || 
-                (pl.x + pl.w > coin.x - coin.radius && pl.x + pl.w < coin.x + coin.radius);
+    float closeX = coin.x;
+    float closeY = coin.y;
     
-    boolean y = (pl.y > coin.y - coin.radius && pl.y < coin.y + coin.radius) || 
-                (pl.y + pl.h > coin.y - coin.radius && pl.y + pl.h < coin.y + coin.radius);
-
-    return (x && y);
+    if(coin.x < pl.x) closeX = pl.x;
+    
+    if(coin.x > pl.x) closeX = pl.x + pl.w;
+    
+    if(coin.y < pl.y) closeY = pl.y;
+    
+    if(coin.y > pl.y) closeY = pl.y + pl.h;
+    
+    float dX = closeX - coin.x;
+    float dY = closeY - coin.y;
+    
+    float distance = sqrt((dX*dX)+(dY*dY));
+    
+    return (distance < coin.radius);
   }
 }
 

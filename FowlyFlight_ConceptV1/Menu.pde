@@ -60,6 +60,7 @@ class Menu {
     }
 
     if ((keysPressed[ENTER] || keysPressed[32]) && !enterPressed) {
+      drawLoading();
       enterPressed = true;
       Button btn = buttons.get(selectedIndex);
       if (btn.text == options[0]) {

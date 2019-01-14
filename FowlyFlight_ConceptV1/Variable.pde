@@ -19,6 +19,7 @@ NameCreater nameCreater;
 
 /////DEV-MODE BEVAT coole en rare mechanics xD//////
 boolean devMode = false;
+boolean weatherOn = false;
 ////////////////////////////////////////////////////
 
 ///////Testing/////////
@@ -32,6 +33,19 @@ float defaultOverallVX;
 float playerTotalStam;
 float totalPlayerVx;
 PImage wallpaper;
+
+//Level Selector
+LvlSelector lvlS;
+PVector lvlSLocation, lvlSPrevSize;
+float lvlSMargin = 20.0f;
+float lvlSBtnSize = 50;
+
+//Background
+Background bg;
+String[] mapNames = {"day", "night", "gray"};
+int[] mapImages = {1, 1, 1}; //MAX_IMAGES is 5
+PImage[][] maps = new PImage[mapNames.length][5];
+PImage[] mapPreviews = new PImage[mapNames.length];
 
 //Particle System
 ArrayList<ParticleSystem> systems = new ArrayList<ParticleSystem>();
@@ -73,6 +87,7 @@ String[] options = {"Play", "Shop", "Exit"};
 boolean inMenu = true;
 boolean playGame = false;
 boolean inShop = false;
+boolean bgSelected = false;
 
 //Player
 PImage canon;
@@ -145,8 +160,6 @@ void mainSetup() {
   timer = new StopWatchTimer();
   plane = loadImage("Sprites/plane.png");
 
-  wallpaper = loadImage("Sprites/backgroundGrey.png");
-
   for (int iBuilding = 0; iBuilding < buildingNames.length; iBuilding++) {
     buildingImages[iBuilding] = loadImage("Sprites/"+buildingNames[iBuilding]);
   }
@@ -181,8 +194,29 @@ void mainSetup() {
   enemies.add(new Enemy(planeHeight, planeWidth, 10, plane));
   font = loadFont("data/8BIT.vlw");
   setupBuilding();
-  setupWall(); 
+  setupWallLvlS(); //Setup for wall and level selector (backDrop tab) 
   setupScore();
   setupTutorial();
   setupStamina();
+}
+
+void setupWallLvlS() {             
+  for (int iImage = 0; iImage < mapNames.length; iImage++) {      
+    //Setting the mapPreview
+    mapPreviews[iImage] = loadImage("data/maps/"+mapNames[iImage]+"_0.png");
+
+    for (int j = 0; j < mapImages[iImage]; j++) {
+      maps[iImage][j] = loadImage(("data/maps/"+mapNames[iImage]+"_"+j+".png"));
+    }
+  }
+
+  lvlSPrevSize = new PVector(width/3, height/3);
+  lvlSLocation = new PVector(width/2 - lvlSPrevSize.x/2, height/2 - lvlSPrevSize.y/2);
+  lvlS = new LvlSelector(lvlSLocation, lvlSPrevSize, mapPreviews, mapNames, lvlSMargin, lvlSBtnSize);
+}
+
+void drawLoading() {
+  textSize(30);
+  textAlign(RIGHT);
+  text("Loading", width - 50, height - 30);
 }

@@ -46,15 +46,16 @@ class HighScore {
 
   void update(int s) {    
     int lowestScore = scores.getInt(scores.getRowCount() - 1, "score");
-    
-    if(!nameC.nameSet && s >= lowestScore){
-       if(!inNameCreator)
-         inNameCreator = true;
-         
-       nameC.update();
-       nameC.draw();
-    } else if(s < lowestScore && !nameC.nameSet){
-        nameC.nameSet = true;
+
+    if (!nameC.nameSet && s >= lowestScore) {
+      systems.clear();
+      if (!inNameCreator)
+        inNameCreator = true;
+
+      nameC.update();
+      nameC.draw();
+    } else if (s < lowestScore && !nameC.nameSet) {
+      nameC.nameSet = true;
     }
 
     if (!hsUpdated && nameC.nameSet) {
@@ -212,6 +213,7 @@ class HighScore {
         Button btn = buttons.get(selectedIndex);
         if (btn.text == options[0]) {
           restart();
+          drawLoading();
           test.starts += 1;
           gameOver.pause();
           theme.rewind();
@@ -219,7 +221,9 @@ class HighScore {
           rainChange();
         } else if (btn.text == options[1]) {
           restart();
+          drawLoading();
           inMenu = true;
+          bgSelected = false;
           playGame = false;
           gameOver.pause();
           menutheme.rewind();
