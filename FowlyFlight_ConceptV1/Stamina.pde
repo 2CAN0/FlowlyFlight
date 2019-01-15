@@ -7,13 +7,13 @@ class Stamina {
   Stamina(Score sc) {
     staminaBarX = sc.w;
     staminaBarY = 0;
-    staminaLevel = 1420.0;
     staminaMax = width - sc.w;
     staminaWidth = staminaLevel;
     staminaHeight = 30;
     staminaBarClr = color(0, 255, 0);
-    staminaDrain = 6;
+    staminaDrain = 5;
     staminaRegen = 1;
+    staminaLevel = staminaMax;
   }
 
   void update() {

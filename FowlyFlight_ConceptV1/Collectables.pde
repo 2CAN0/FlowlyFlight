@@ -41,9 +41,12 @@ class Collectables {
       vx   = -10;
       x = 0 - radius;
       println("Coins: "+(int)collectedCoins);
+      textAlign(CENTER, CENTER);
+      textSize(15);
+      //text("+" +);
     } else {
       fill(#FFF158);
-      image(coinImg, x, y, radius*2, radius*2);
+      image(coinImg, x-radius, y - radius, radius*2, radius*2);
       //println("X: "+x+ " Y:"+ y+" xVelocity: "+vx +" TimeElapsed: "+timer2.second());
     }
   }
@@ -51,20 +54,20 @@ class Collectables {
   boolean hitDetected(Player pl, Collectables coin) {
     float closeX = coin.x;
     float closeY = coin.y;
-    
-    if(coin.x < pl.x) closeX = pl.x;
-    
-    if(coin.x > pl.x) closeX = pl.x + pl.w;
-    
-    if(coin.y < pl.y) closeY = pl.y;
-    
-    if(coin.y > pl.y) closeY = pl.y + pl.h;
-    
+
+    if (coin.x < pl.x) closeX = pl.x;
+
+    if (coin.x > pl.x) closeX = pl.x + pl.w;
+
+    if (coin.y < pl.y) closeY = pl.y;
+
+    if (coin.y > pl.y) closeY = pl.y + pl.h;
+
     float dX = closeX - coin.x;
     float dY = closeY - coin.y;
-    
+
     float distance = sqrt((dX*dX)+(dY*dY));
-    
+
     return (distance < coin.radius);
   }
 }
