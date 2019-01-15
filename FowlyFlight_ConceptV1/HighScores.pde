@@ -5,6 +5,7 @@ class HighScore {
   PVector size;
   boolean restart = false;
   boolean changedSelected = false;
+  int lastScore = 0;
   MiniMenu mm;
   NameCreater nameC;
 
@@ -46,7 +47,7 @@ class HighScore {
 
   void update(int s) {    
     int lowestScore = scores.getInt(scores.getRowCount() - 1, "score");
-
+    lastScore = s;
     if (!nameC.nameSet && s >= lowestScore) {
       systems.clear();
       if (!inNameCreator)
@@ -100,6 +101,14 @@ class HighScore {
 
       scoreY += fontSize + fontSize/3;
     }
+    
+    fill(0, 100);
+    rect(width/2 - size.x/2, height/2 + size.y/2.8, size.x, 50);
+    fill(255);
+    textAlign(LEFT);
+    text("score: ", width/2 - size.x/2 + 10, height/2.0 + size.y/2.4 + 11);
+    textAlign(RIGHT);
+    text(lastScore, width/2 + size.x/2 - 10, height/2.0 + size.y/2.4 + 11);
   }
 
   void draw() {
