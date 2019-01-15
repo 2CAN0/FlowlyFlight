@@ -30,7 +30,7 @@ class ParticleSystem {
     lifespan = ls;
     type = typo;
     for (int i = 0; i < num; i++) {
-        particles.add(new FeatherParticle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size, feat));    // location, lifespan, wind, gravity, velocity, size, image
+      particles.add(new FeatherParticle(origin, lifespan, wind, gravity, new PVector(random(-1, 1), random(-1, 1)), size, feat));    // location, lifespan, wind, gravity, velocity, size, image
     }
   }
 
@@ -143,12 +143,14 @@ class RainParticle extends Particle {
   }
 
   void display() {
-    pushMatrix();
-    translate(position.x, position.y);
-    stroke(39, 171, 240, lifespan);
-    rotate(angle);
-    line(0, 0, 25, 0);
-    popMatrix();
+    if (weatherOn) {
+      pushMatrix();
+      translate(position.x, position.y);
+      stroke(39, 171, 240, lifespan);
+      rotate(angle);
+      line(0, 0, 25, 0);
+      popMatrix();
+    }
   }
 }
 
@@ -161,7 +163,7 @@ class Particle {
 
   Particle(PVector l, float span, float wind, float gravity, PVector v, PVector s) {
     acceleration = new PVector(wind, gravity);
-    velocity = new PVector(random(-1,1), random(-1,1));
+    velocity = new PVector(random(-1, 1), random(-1, 1));
     position = l.copy();
     lifespan = span;
     size = s.copy();
