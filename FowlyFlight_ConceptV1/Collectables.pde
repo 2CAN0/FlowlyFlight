@@ -1,6 +1,9 @@
 //Luca Ruiters - 500796991
 
 PImage coinImg;
+boolean hitShit = false;
+float prevX;
+float prevY;
 
 class Collectables {
   float x, 
@@ -8,6 +11,7 @@ class Collectables {
     vx, 
     radius, 
     angle;
+  int pickupTimer;
 
 
   Collectables(float velocityX, PImage co) {
@@ -18,6 +22,7 @@ class Collectables {
     timerStart();
     coinImg = co;
     angle = 0;
+    pickupTimer = 12000;
   }
 
   void update() {
@@ -36,19 +41,36 @@ class Collectables {
   void draw() {
     if (hitDetected(player, coin)) {
       collectedCoins += 1;
+      prevX = x;
+      prevY = y;
       coin_pickup.rewind();
       coin_pickup.play();
       vx   = -10;
       x = 0 - radius;
       println("Coins: "+(int)collectedCoins);
+
+      //Pickup feedback
+
       textAlign(CENTER, CENTER);
       textSize(15);
-      //text("+" +);
+      fill(255);
+      hitShit = true;
     } else {
       fill(#FFF158);
       image(coinImg, x-radius, y - radius, radius*2, radius*2);
       //println("X: "+x+ " Y:"+ y+" xVelocity: "+vx +" TimeElapsed: "+timer2.second());
     }
+    
+    if (hitShit && pickupTimer > 0) { 
+      stroke(0);
+        text("+ 10", prevX, prevY);
+        noStroke();
+        pickupTimer -= 1;
+        println("snikkel");
+      } else {
+        pickupTimer = 120;
+        hitShit = false;
+      }
   }
 
   boolean hitDetected(Player pl, Collectables coin) {
