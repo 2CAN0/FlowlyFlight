@@ -22,7 +22,7 @@ class Collectables {
     timerStart();
     coinImg = co;
     angle = 0;
-    pickupTimer = 12000;
+    pickupTimer = 60;
   }
 
   void update() {
@@ -68,7 +68,7 @@ class Collectables {
         pickupTimer -= 1;
         println("snikkel");
       } else {
-        pickupTimer = 120;
+        pickupTimer = 60;
         hitShit = false;
       }
   }

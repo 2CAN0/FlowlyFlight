@@ -48,6 +48,9 @@ void draw() {
         playerLauncherUpdate();
         if (player.launched)
           player.draw();
+        else{
+           drawTutorial(); 
+        }
         collectableUpdate();
         score.update();      
         score.draw();
