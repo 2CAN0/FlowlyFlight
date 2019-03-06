@@ -1,3 +1,7 @@
+/*
+*  @author: Luca Ruiters
+*/
+
 class LvlSelector {
   PVector location, size;
   PImage[] mapPreviews;
@@ -32,12 +36,12 @@ class LvlSelector {
 
       selectedChanged = true;
     }
-    
-    if((keysPressed[ENTER] || keysPressed[32]) && !enterPressed){
-       enterPressed = true;
-       bgSelected = true;
-       drawLoading();
-       bg = new Background(maps[selectedMap], mapImages[selectedMap]);
+
+    if ((keysPressed[ENTER] || keysPressed[32]) && !enterPressed) {
+      enterPressed = true;
+      bgSelected = true;
+      drawLoading();
+      bg = new Background(maps[selectedMap], mapImages[selectedMap]);
     }
   }
 

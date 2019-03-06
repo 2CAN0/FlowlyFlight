@@ -1,3 +1,7 @@
+/*
+*  @author: Luca Ruiters
+*/
+
 class ParticleSystem {
 
   ArrayList<Particle> particles;    // An arraylist for all the particles
